@@ -34,6 +34,7 @@
 		4926424E2CCC202C00C6161C /* WellyBusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WellyBusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		492642752CCC8A9400C6161C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		492642772CCC8C8800C6161C /* TODO.gitignored.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.gitignored.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		492642B12CCD812000C6161C /* WellyBus.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WellyBus.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +83,7 @@
 		492642292CCC202B00C6161C = {
 			isa = PBXGroup;
 			children = (
+				492642B12CCD812000C6161C /* WellyBus.xctestplan */,
 				492642752CCC8A9400C6161C /* README.md */,
 				492642772CCC8C8800C6161C /* TODO.gitignored.md */,
 				492642342CCC202B00C6161C /* WellyBus */,

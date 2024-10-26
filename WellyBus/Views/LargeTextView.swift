@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct LargeTextView: View {
-  // Sample long text - replace with your content
-  private let longText = await BusTracker().main()
-  //    """
-  //    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  //
-  //    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  //
-  //    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-  //    """
+  @State private var myText: String = "Loading..."
 
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 16) {
-        Text("Large Text Content")
+        Text("Bus Stops")
           .font(.title)
           .fontWeight(.bold)
           .padding(.bottom, 8)
 
-        Text(longText)
+        Text(myText)
+          .onAppear {
+            Task {
+              myText = await BusTracker().main()
+              logger.log("Finished loading")
+              logger.log("Fetched text: \(myText)")
+            }
+          }
           .font(.body)
           .lineSpacing(4)
           .fixedSize(horizontal: false, vertical: true)
@@ -45,13 +44,3 @@ struct LargeTextView_Previews: PreviewProvider {
     LargeTextView()
   }
 }
-
-// Example usage in another view
-//struct ContentView: View {
-//    var body: some View {
-//        NavigationView {
-//            LargeTextView()
-//                .navigationTitle("Documentation")
-//        }
-//    }
-//}

@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "BD23822A-6E9C-4E43-B6C3-969DB5578325",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WellyBus.xcodeproj",
+      "identifier" : "492642312CCC202B00C6161C",
+      "name" : "WellyBus"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:WellyBus.xcodeproj",
+        "identifier" : "492642432CCC202C00C6161C",
+        "name" : "WellyBusTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WellyBus.xcodeproj",
+        "identifier" : "4926424D2CCC202C00C6161C",
+        "name" : "WellyBusUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

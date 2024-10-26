@@ -6,7 +6,9 @@
 //
 import Foundation
 
-struct BusDepartureApiResponse: Decodable {
+// TODO: are nested structs ok in swift?
+
+struct StopPredictionsApiDeparture: Decodable {
   struct Origin: Decodable {
     let stopId: String
     let name: String
@@ -29,16 +31,16 @@ struct BusDepartureApiResponse: Decodable {
 
   struct Arrival: Decodable {
     let aimed: String
-    let expected: String
+    let expected: String?
   }
 
   struct Departure: Decodable {
     let aimed: String
-    let expected: String
+    let expected: String?
 
     func bestGuess() -> Date {
-      if !expected.isEmpty {
-        return ISO8601DateFormatter().date(from: expected) ?? Date()
+      if let x = expected {
+        return ISO8601DateFormatter().date(from: x) ?? Date()
       }
       return ISO8601DateFormatter().date(from: aimed) ?? Date()
     }
@@ -55,11 +57,11 @@ struct BusDepartureApiResponse: Decodable {
   let origin: Origin
   let destination: Destination
   let delay: String
-  let vehicleId: String
+  let vehicleId: String?
   let name: String
   let arrival: Arrival
   let departure: Departure
-  let status: String
+  let status: String?
   let monitored: Bool
   let wheelchairAccessible: Bool
   let tripId: String
@@ -68,7 +70,7 @@ struct BusDepartureApiResponse: Decodable {
     case stopId = "stop_id"
     case serviceId = "service_id"
     case direction
-    case busOperator
+    case busOperator = "operator"
     case origin
     case destination
     case delay

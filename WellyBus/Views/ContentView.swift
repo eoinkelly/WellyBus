@@ -13,8 +13,8 @@ struct ContentView: View {
   @Query private var items: [Item]
 
   var body: some View {
-    LargeTextView()
-      .navigationTitle("Documentation")
+    LargeTextView().navigationTitle("Bus Stops")
+
     NavigationSplitView {
       List {
         ForEach(items) { item in
