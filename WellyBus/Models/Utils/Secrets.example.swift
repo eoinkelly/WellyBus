@@ -3,4 +3,4 @@
 //
 // API keys available from https://opendata.metlink.org.nz/
 
-//public let METLINK_API_KEY: String = "your_api_key_here"
+//public let metLinkApiKey: String = "your_api_key_here"

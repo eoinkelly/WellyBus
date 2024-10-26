@@ -13,7 +13,8 @@ import Testing
 struct MetlinkResponseTests {
   @Test func decodesRealExampleAPIResponse() throws {
     #expect(throws: Never.self) {
-      try JSONDecoder().decode(StopPredictionsApiResponse.self, from: STOP_PREDICTIONS_API_RESPONSE_EXAMPLE)
+      try JSONDecoder().decode(
+        StopPredictionsApiResponse.self, from: stopPredictionsApiResponseExample)
     }
   }
 }

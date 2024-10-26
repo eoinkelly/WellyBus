@@ -21,7 +21,7 @@ struct LargeTextView: View {
         Text(myText)
           .onAppear {
             Task {
-              myText = await BusTracker().main()
+              myText = await BusStopPredictor().textSummary()
               logger.log("Finished loading")
               logger.log("Fetched text: \(myText)")
             }

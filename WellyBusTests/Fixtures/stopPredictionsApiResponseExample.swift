@@ -6,7 +6,7 @@
 //
 import Foundation
 
-public let STOP_PREDICTIONS_API_RESPONSE_EXAMPLE = """
+public let stopPredictionsApiResponseExample = """
     {
     "farezone": "1",
     "closed": false,
