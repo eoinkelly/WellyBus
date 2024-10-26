@@ -1,0 +1,818 @@
+{
+  "farezone": "3",
+  "closed": false,
+  "departures": [
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT1M4S",
+      "vehicle_id": "7163",
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T08:03:00+13:00",
+        "expected": "2024-10-26T08:04:04+13:00"
+      },
+      "departure": {
+        "aimed": "2024-10-26T08:03:00+13:00",
+        "expected": "2024-10-26T08:04:21+13:00"
+      },
+      "status": "ontime",
+      "monitored": true,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__402__MNM__2051__2051_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT19S",
+      "vehicle_id": "7803",
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T08:53:00+13:00",
+        "expected": "2024-10-26T08:53:19+13:00"
+      },
+      "departure": {
+        "aimed": "2024-10-26T08:53:00+13:00",
+        "expected": "2024-10-26T08:53:36+13:00"
+      },
+      "status": "ontime",
+      "monitored": true,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__404__MNM__2011__2011_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T09:23:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T09:23:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__406__MNM__2021__2021_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T09:53:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T09:53:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__408__MNM__2051__2051_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T10:23:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T10:23:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__410__MNM__2092__2092_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T10:53:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T10:53:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__412__MNM__2031__2031_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T11:22:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T11:22:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__414__MNM__2111__2111_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T11:52:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T11:52:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__416__MNM__2081__2081_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T12:22:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T12:22:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__418__MNM__2092__2092_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T12:52:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T12:52:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__420__MNM__2041__2041_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T13:22:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T13:22:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__422__MNM__2052__2052_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T13:52:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T13:52:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__424__MNM__2081__2081_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T14:22:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T14:22:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__426__MNM__2012__2012_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T14:52:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T14:52:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__428__MNM__2102__2102_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T15:22:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T15:22:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__430__MNM__2071__2071_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T15:52:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T15:52:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__432__MNM__2022__2022_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T16:21:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T16:21:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__434__MNM__2112__2112_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T16:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T16:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__436__MNM__2032__2032_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T17:21:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T17:21:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__438__MNM__2061__2061_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T17:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T17:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__440__MNM__2022__2022_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T18:21:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T18:21:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__442__MNM__2112__2112_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T18:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T18:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__444__MNM__2082__2082_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T19:21:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T19:21:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__454__MNM__2061__2061_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T19:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T19:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__446__MNM__2072__2072_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T20:21:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T20:21:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__456__MNM__2112__2112_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T20:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T20:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__448__MNM__2082__2082_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T21:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T21:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__450__MNM__2072__2072_20241013"
+    },
+    {
+      "stop_id": "3546",
+      "service_id": "52",
+      "direction": "inbound",
+      "operator": "MNM",
+      "origin": {
+        "stop_id": "3250",
+        "name": "Johnsonville-C"
+      },
+      "destination": {
+        "stop_id": "5516",
+        "name": "Courtenay Pl"
+      },
+      "delay": "PT0S",
+      "vehicle_id": null,
+      "name": "NewlandsRd at Salfo",
+      "arrival": {
+        "aimed": "2024-10-26T22:51:00+13:00",
+        "expected": null
+      },
+      "departure": {
+        "aimed": "2024-10-26T22:51:00+13:00",
+        "expected": null
+      },
+      "status": null,
+      "monitored": false,
+      "wheelchair_accessible": true,
+      "trip_id": "52__1__452__MNM__2062__2062_20241013"
+    }
+  ]
+}
