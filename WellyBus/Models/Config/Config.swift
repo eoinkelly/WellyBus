@@ -8,38 +8,37 @@
 class Config {
   static let shared = Config()
 
-  //  var username: String?
-  let busStopsOfInterest: [BusStopOfInterest]
+  let busStopsOfInterest: [StopConfig]
 
   private init() {
+    // Someday this could be loaded from somewhere user editable
+
     self.busStopsOfInterest = [
-      BusStopOfInterest(
-        friendlyName: "Nearest work",
-        stopId: "5014",
-        priorityBusIds: ["52", "58"],
-        ordinaryBusIds: ["56", "57"],
-        direction: BusDirection.toHome
-      ),
-      BusStopOfInterest(
-        friendlyName: "St. James Theatre",
-        stopId: "5002",
-        priorityBusIds: ["52", "58"],
-        ordinaryBusIds: ["56", "57"],
-        direction: BusDirection.toHome
-      ),
-      BusStopOfInterest(
-        friendlyName: "Newlands Road/Black Rock Road",
-        stopId: "3546",
-        priorityBusIds: ["52", "58"],
-        ordinaryBusIds: ["56", "57"],
-        direction: BusDirection.toTown
-      ),
-      BusStopOfInterest(
-        friendlyName: "Glanmire Road/Truville Cr",
+      StopConfig(
+        //        friendlyName: "Glanmire Road/Truville Cr",
+        friendlyName: "Up the top",
         stopId: "3772",
-        priorityBusIds: ["52", "58"],
-        ordinaryBusIds: ["56", "57"],
+        followedBusIds: ["52", "58", "56", "57", "N5"],
         direction: BusDirection.toTown
+      ),
+      StopConfig(
+        //        friendlyName: "Newlands Road/Black Rock Road",
+        friendlyName: "Down the bottom",
+        stopId: "3546",
+        followedBusIds: ["52", "58", "56", "57", "N5"],
+        direction: BusDirection.toTown
+      ),
+      StopConfig(
+        friendlyName: "Outside DoC",
+        stopId: "5006",
+        followedBusIds: ["52", "58", "56", "57", "N5"],
+        direction: BusDirection.toHome
+      ),
+      StopConfig(
+        friendlyName: "Lambton Quay",
+        stopId: "5014",
+        followedBusIds: ["52", "58", "56", "57", "N5"],
+        direction: BusDirection.toHome
       ),
     ]
 

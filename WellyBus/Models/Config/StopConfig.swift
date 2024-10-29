@@ -10,10 +10,16 @@ enum BusDirection: String, Codable {
   case toHome
 }
 
-struct BusStopOfInterest {
+struct StopConfig {
   let friendlyName: String
   let stopId: String
-  let priorityBusIds: Set<String>
-  let ordinaryBusIds: Set<String>
+  let followedBusIds: Set<String>
   let direction: BusDirection
+
+  func formattedDirection() -> String {
+    switch direction {
+    case .toTown: return "To town"
+    case .toHome: return "To home"
+    }
+  }
 }

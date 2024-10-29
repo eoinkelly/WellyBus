@@ -6,9 +6,7 @@
 //
 import Foundation
 
-// TODO: are nested structs ok in swift?
-
-struct StopPredictionsApiDeparture: Decodable {
+struct StopPredictionsApiDeparture: Decodable, Identifiable {
   struct Origin: Decodable {
     let stopId: String
     let name: String
@@ -48,8 +46,31 @@ struct StopPredictionsApiDeparture: Decodable {
     func secondsUntilBestGuess() -> TimeInterval {
       return bestGuess().timeIntervalSince(Date())
     }
+
+    func bestGuessString() -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "HH:mm"
+
+      return dateFormatter.string(from: bestGuess())
+    }
+
+    func timeUntil() -> String {
+      let departureSecs = Int(secondsUntilBestGuess())
+      let hours = departureSecs / (60 * 60)
+      let secsNotInHours = departureSecs % (60 * 60)
+      let mins = secsNotInHours / 60
+      let secs = secsNotInHours % 60
+
+      var duration = ""
+      if hours > 0 { duration += "\(hours)h " }
+      if mins > 0 { duration += "\(mins)m " }
+      if hours == 0 && mins == 0 { duration += "\(secs)s " }
+
+      return duration
+    }
   }
 
+  let id = UUID()
   let stopId: String
   let serviceId: String
   let direction: String
