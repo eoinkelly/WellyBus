@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct StopPredictionsView: View {
+struct MainAppView: View {
   @State private var stopPredictions: [StopPrediction] = []
-  @State private var lastFetchedAt = "..."
+  @State private var lastFetchedAt = "Never"
 
   var body: some View {
     HStack(alignment: .center) {
@@ -25,7 +25,8 @@ struct StopPredictionsView: View {
 
       Button("Refresh", systemImage: "arrow.clockwise") {
         Task {
-          stopPredictions = BusStopPredictor().stopPredictions()
+          lastFetchedAt = "..."
+          stopPredictions = await BusStopPredictor().stopPredictions()
           lastFetchedAt = prettyNow()
         }
       }
@@ -34,8 +35,10 @@ struct StopPredictionsView: View {
     .padding([.leading, .trailing], 16)
 
     Text("Last updated at \(lastFetchedAt)")
-      .font(.caption)
-      .padding(4)
+      .font(.footnote)
+      .padding([.leading, .trailing], 16)
+      .padding([.top, .bottom], 1)
+      .frame(maxWidth: .infinity, alignment: .leading)
 
     ScrollView {
       Grid {
@@ -47,7 +50,7 @@ struct StopPredictionsView: View {
       }
       .onAppear {
         Task {
-          stopPredictions = BusStopPredictor().stopPredictions()
+          stopPredictions = await BusStopPredictor().stopPredictions()
           lastFetchedAt = prettyNow()
         }
       }
@@ -56,11 +59,11 @@ struct StopPredictionsView: View {
 
   private func prettyNow() -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd HH:mm"
+    formatter.dateFormat = "d MMM HH:mm:ss"
     return formatter.string(from: Date())
   }
 }
 
 #Preview {
-  StopPredictionsView()
+  MainAppView()
 }

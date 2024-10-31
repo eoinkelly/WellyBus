@@ -8,15 +8,9 @@
 import SwiftUI
 
 struct StopPredictionView: View {
-  @State private var stopPrediction: StopPrediction
-  @State private var departures: [StopPredictionsApiDeparture]
+  @State public var stopPrediction: StopPrediction
 
   let numDeparturesToShow = 5
-
-  init(stopPrediction: StopPrediction) {
-    self.stopPrediction = stopPrediction
-    self.departures = []
-  }
 
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
@@ -44,7 +38,7 @@ struct StopPredictionView: View {
       }
 
       Grid(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 8) {
-        ForEach(departures) { departure in
+        ForEach(stopPrediction.departures.prefix(numDeparturesToShow)) { departure in
           GridRow(alignment: .firstTextBaseline) {
             Text(departure.serviceId)
             Text("leaves in")
@@ -55,13 +49,6 @@ struct StopPredictionView: View {
               .fontWeight(.bold)
           }
           Divider()  // TODO: how to get full width without this?
-        }
-      }
-      .onAppear {
-        Task {
-          let allDepartures = await stopPrediction.departures()
-          departures = Array(allDepartures.prefix(numDeparturesToShow))
-
         }
       }
     }
