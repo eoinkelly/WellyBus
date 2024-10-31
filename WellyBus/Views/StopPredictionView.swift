@@ -66,7 +66,6 @@ struct StopPredictionView: View {
       }
     }
     .padding([.leading, .trailing], 24)
-    .background(lightGray)
   }
 }
 

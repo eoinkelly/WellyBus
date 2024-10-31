@@ -26,7 +26,6 @@ struct WellyBusApp: App {
   var body: some Scene {
     WindowGroup {
       StopPredictionsView()
-
     }
     .modelContainer(sharedModelContainer)
   }

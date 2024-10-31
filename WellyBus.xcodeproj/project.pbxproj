@@ -10,9 +10,6 @@
 		492642762CCC8A9C00C6161C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 492642752CCC8A9400C6161C /* README.md */; };
 		492642782CCC8C9100C6161C /* TODO.gitignored.md in Resources */ = {isa = PBXBuildFile; fileRef = 492642772CCC8C8800C6161C /* TODO.gitignored.md */; };
 		49F364382CD1762C00BF7104 /* .editorconfig in Resources */ = {isa = PBXBuildFile; fileRef = 49F364372CD1762C00BF7104 /* .editorconfig */; };
-		49F364402CD1E4F200BF7104 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3643F2CD1E4F200BF7104 /* WidgetKit.framework */; };
-		49F364422CD1E4F200BF7104 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F364412CD1E4F200BF7104 /* SwiftUI.framework */; };
-		49F3644F2CD1E4F300BF7104 /* WellyBusWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 49F3643D2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,13 +27,6 @@
 			remoteGlobalIDString = 492642312CCC202B00C6161C;
 			remoteInfo = WellyBus;
 		};
-		49F3644D2CD1E4F300BF7104 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4926422A2CCC202B00C6161C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49F3643C2CD1E4F200BF7104;
-			remoteInfo = WellyBusWidgetExtensionExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				49F3644F2CD1E4F300BF7104 /* WellyBusWidgetExtensionExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,20 +50,9 @@
 		492642772CCC8C8800C6161C /* TODO.gitignored.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.gitignored.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
 		492642B12CCD812000C6161C /* WellyBus.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WellyBus.xctestplan; sourceTree = "<group>"; };
 		49F364372CD1762C00BF7104 /* .editorconfig */ = {isa = PBXFileReference; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
-		49F3643D2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WellyBusWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F3643F2CD1E4F200BF7104 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		49F364412CD1E4F200BF7104 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		49F364502CD1E4F300BF7104 /* Exceptions for "WellyBusWidgetExtension" folder in "WellyBusWidgetExtensionExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 49F3643C2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		492642342CCC202B00C6161C /* WellyBus */ = {
@@ -95,14 +73,6 @@
 		49F364362CD1722900BF7104 /* Scripts */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Scripts;
-			sourceTree = "<group>";
-		};
-		49F364432CD1E4F200BF7104 /* WellyBusWidgetExtension */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				49F364502CD1E4F300BF7104 /* Exceptions for "WellyBusWidgetExtension" folder in "WellyBusWidgetExtensionExtension" target */,
-			);
-			path = WellyBusWidgetExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -129,15 +99,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49F3643A2CD1E4F200BF7104 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49F364422CD1E4F200BF7104 /* SwiftUI.framework in Frameworks */,
-				49F364402CD1E4F200BF7104 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -152,7 +113,6 @@
 				492642342CCC202B00C6161C /* WellyBus */,
 				492642472CCC202C00C6161C /* WellyBusTests */,
 				492642512CCC202C00C6161C /* WellyBusUITests */,
-				49F364432CD1E4F200BF7104 /* WellyBusWidgetExtension */,
 				49F3643E2CD1E4F200BF7104 /* Frameworks */,
 				492642332CCC202B00C6161C /* Products */,
 			);
@@ -164,7 +124,6 @@
 				492642322CCC202B00C6161C /* WellyBus.app */,
 				492642442CCC202C00C6161C /* WellyBusTests.xctest */,
 				4926424E2CCC202C00C6161C /* WellyBusUITests.xctest */,
-				49F3643D2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,7 +152,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				49F3644E2CD1E4F300BF7104 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				492642342CCC202B00C6161C /* WellyBus */,
@@ -251,28 +209,6 @@
 			productReference = 4926424E2CCC202C00C6161C /* WellyBusUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		49F3643C2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49F364512CD1E4F300BF7104 /* Build configuration list for PBXNativeTarget "WellyBusWidgetExtensionExtension" */;
-			buildPhases = (
-				49F364392CD1E4F200BF7104 /* Sources */,
-				49F3643A2CD1E4F200BF7104 /* Frameworks */,
-				49F3643B2CD1E4F200BF7104 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				49F364432CD1E4F200BF7104 /* WellyBusWidgetExtension */,
-			);
-			name = WellyBusWidgetExtensionExtension;
-			packageProductDependencies = (
-			);
-			productName = WellyBusWidgetExtensionExtension;
-			productReference = 49F3643D2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -294,9 +230,6 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 492642312CCC202B00C6161C;
 					};
-					49F3643C2CD1E4F200BF7104 = {
-						CreatedOnToolsVersion = 16.1;
-					};
 				};
 			};
 			buildConfigurationList = 4926422D2CCC202B00C6161C /* Build configuration list for PBXProject "WellyBus" */;
@@ -316,7 +249,6 @@
 				492642312CCC202B00C6161C /* WellyBus */,
 				492642432CCC202C00C6161C /* WellyBusTests */,
 				4926424D2CCC202C00C6161C /* WellyBusUITests */,
-				49F3643C2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -340,13 +272,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4926424C2CCC202C00C6161C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49F3643B2CD1E4F200BF7104 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -377,13 +302,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49F364392CD1E4F200BF7104 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -396,11 +314,6 @@
 			isa = PBXTargetDependency;
 			target = 492642312CCC202B00C6161C /* WellyBus */;
 			targetProxy = 4926424F2CCC202C00C6161C /* PBXContainerItemProxy */;
-		};
-		49F3644E2CD1E4F300BF7104 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49F3643C2CD1E4F200BF7104 /* WellyBusWidgetExtensionExtension */;
-			targetProxy = 49F3644D2CD1E4F300BF7104 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -676,62 +589,6 @@
 			};
 			name = Release;
 		};
-		49F364522CD1E4F300BF7104 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MN6X7B9EVX;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WellyBusWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WellyBusWidgetExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.eoinkelly.WellyBus.WellyBusWidgetExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		49F364532CD1E4F300BF7104 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MN6X7B9EVX;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WellyBusWidgetExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WellyBusWidgetExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.eoinkelly.WellyBus.WellyBusWidgetExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -767,15 +624,6 @@
 			buildConfigurations = (
 				4926425F2CCC202C00C6161C /* Debug */,
 				492642602CCC202C00C6161C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49F364512CD1E4F300BF7104 /* Build configuration list for PBXNativeTarget "WellyBusWidgetExtensionExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49F364522CD1E4F300BF7104 /* Debug */,
-				49F364532CD1E4F300BF7104 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
