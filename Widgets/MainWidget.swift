@@ -13,7 +13,7 @@ struct MainWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: WellyBusWidgetTimelineProvider()) { entry in
       MainWidgetView(entry: entry)
-        .containerBackground(.fill.tertiary, for: .widget)
+        .containerBackground(.background, for: .widget)
     }
     .configurationDisplayName("Welly Bus")
     .description("Upcoming bus departures")
@@ -24,6 +24,6 @@ struct MainWidget: Widget {
 #Preview(as: .systemLarge) {
   MainWidget()
 } timeline: {
-  MainWidgetTimelineEntry(date: .now, stopPredictions: [])
-  MainWidgetTimelineEntry(date: .now, stopPredictions: [])
+  let stopPredictions = await BusStopPredictor().stopPredictions()
+  MainWidgetTimelineEntry(date: Date(), stopPredictions: stopPredictions)
 }

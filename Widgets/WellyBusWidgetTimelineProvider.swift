@@ -8,12 +8,10 @@ import WidgetKit
 
 struct WellyBusWidgetTimelineProvider: TimelineProvider {
   func placeholder(in context: Context) -> MainWidgetTimelineEntry {
-    print("running placeholder")
     return MainWidgetTimelineEntry(date: Date(), stopPredictions: [])
   }
 
   func getSnapshot(in context: Context, completion: @escaping (MainWidgetTimelineEntry) -> Void) {
-    print("running getSnapshot")
     let entry = MainWidgetTimelineEntry(date: Date(), stopPredictions: [])
     completion(entry)
   }
@@ -22,16 +20,19 @@ struct WellyBusWidgetTimelineProvider: TimelineProvider {
     in context: Context, completion: @escaping (Timeline<MainWidgetTimelineEntry>) -> Void
   ) {
 
-    print("running getTimeline")
     Task {
       do {
         // TODO: handle network errors properly
+        // TODO: do this network request in background to avoid system killing widget before response arrives
         let stopPredictions = await BusStopPredictor().stopPredictions()
-        let entry = MainWidgetTimelineEntry(date: Date(), stopPredictions: stopPredictions)
+        let now = Date()
+        let entry = MainWidgetTimelineEntry(date: now, stopPredictions: stopPredictions)
 
-        let refreshTime = Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
-
+        // Docs say 5min is minimum widget refresh time
+        // https://developer.apple.com/documentation/WidgetKit/Keeping-a-Widget-Up-To-Date
+        let refreshTime = Calendar.current.date(byAdding: .minute, value: 5, to: now)!
         let timeline = Timeline(entries: [entry], policy: .after(refreshTime))
+
         completion(timeline)
       } catch {
         print(error.localizedDescription)
