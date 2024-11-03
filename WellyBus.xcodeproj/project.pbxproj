@@ -77,19 +77,19 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		492642342CCC202B00C6161C /* WellyBusApp */ = {
+		492642342CCC202B00C6161C /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WellyBusApp;
+			path = App;
 			sourceTree = "<group>";
 		};
-		492642472CCC202C00C6161C /* WellyBusTests */ = {
+		492642472CCC202C00C6161C /* Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WellyBusTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		492642512CCC202C00C6161C /* WellyBusUITests */ = {
+		492642512CCC202C00C6161C /* UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WellyBusUITests;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		4991E77C2CD426EA008A0E03 /* Widgets */ = {
@@ -100,9 +100,9 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
-		4991E7922CD43012008A0E03 /* WellyBusCore */ = {
+		4991E7922CD43012008A0E03 /* Core */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WellyBusCore;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		4991E7A22CD43105008A0E03 /* Docs */ = {
@@ -159,10 +159,10 @@
 				492642752CCC8A9400C6161C /* README.md */,
 				492642772CCC8C8800C6161C /* TODO.gitignored.md */,
 				49F364362CD1722900BF7104 /* Scripts */,
-				4991E7922CD43012008A0E03 /* WellyBusCore */,
-				492642342CCC202B00C6161C /* WellyBusApp */,
-				492642472CCC202C00C6161C /* WellyBusTests */,
-				492642512CCC202C00C6161C /* WellyBusUITests */,
+				4991E7922CD43012008A0E03 /* Core */,
+				492642342CCC202B00C6161C /* App */,
+				492642472CCC202C00C6161C /* Tests */,
+				492642512CCC202C00C6161C /* UITests */,
 				4991E77C2CD426EA008A0E03 /* Widgets */,
 				49F3643E2CD1E4F200BF7104 /* Frameworks */,
 				492642332CCC202B00C6161C /* Products */,
@@ -208,8 +208,8 @@
 				4991E7852CD426EB008A0E03 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				492642342CCC202B00C6161C /* WellyBusApp */,
-				4991E7922CD43012008A0E03 /* WellyBusCore */,
+				492642342CCC202B00C6161C /* App */,
+				4991E7922CD43012008A0E03 /* Core */,
 				4991E7A22CD43105008A0E03 /* Docs */,
 			);
 			name = WellyBus;
@@ -233,7 +233,7 @@
 				492642462CCC202C00C6161C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				492642472CCC202C00C6161C /* WellyBusTests */,
+				492642472CCC202C00C6161C /* Tests */,
 			);
 			name = WellyBusTests;
 			packageProductDependencies = (
@@ -256,7 +256,7 @@
 				492642502CCC202C00C6161C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				492642512CCC202C00C6161C /* WellyBusUITests */,
+				492642512CCC202C00C6161C /* UITests */,
 			);
 			name = WellyBusUITests;
 			packageProductDependencies = (
@@ -279,7 +279,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4991E77C2CD426EA008A0E03 /* Widgets */,
-				4991E7922CD43012008A0E03 /* WellyBusCore */,
+				4991E7922CD43012008A0E03 /* Core */,
 				4991E7A22CD43105008A0E03 /* Docs */,
 			);
 			name = WidgetsExtension;
@@ -549,7 +549,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WellyBusApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = MN6X7B9EVX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -585,7 +585,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WellyBusApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				DEVELOPMENT_TEAM = MN6X7B9EVX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
