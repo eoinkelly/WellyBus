@@ -1,10 +1,3 @@
-//
-//  Config.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 27/10/2024.
-//
-
 class Config {
   static let shared = Config()
 

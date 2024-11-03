@@ -1,29 +1,39 @@
 import SwiftUI
 
 struct ConciseDeparturesView: View {
-  @State public var departures: [StopPredictionsApiDeparture]
-  @State public var numDeparturesToShow = 6
+  @State private var rows: [Row]
 
-  let columns = [
-    GridItem(.flexible(), spacing: 4),
-    GridItem(.flexible(), spacing: 4),
-    GridItem(.flexible(), spacing: 4),
-  ]
+  init(departures: [StopPredictionsApiDeparture], maxDeparturesToShow: Int) {
+    let visibleDepartures = Array(departures.prefix(maxDeparturesToShow))
+
+    self.rows = Row.create(from: visibleDepartures)
+  }
 
   var body: some View {
-    LazyVGrid(columns: columns, alignment: .leading, spacing: 4) {
-      ForEach(departures.prefix(numDeparturesToShow)) { departure in
-        HStack(alignment: .center) {
-          Text(departure.serviceId)
-            .font(.body)
-            .foregroundStyle(.black)
-            .padding(1)
-            .background(.yellow)
-            .cornerRadius(3)
-          Text(departure.departure.timeUntil())
-            .font(.body)
+    Grid(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 4) {
+      ForEach(rows) { row in
+        GridRow {
+          ForEach(row.departures) { departure in
+            ConciseDepartureView(departure: departure)
+              .frame(maxWidth: .infinity)
+          }
         }
       }
     }
+  }
+}
+
+private struct Row: Identifiable {
+  let id = UUID()
+  let departures: [StopPredictionsApiDeparture]
+
+  static func create(from departures: [StopPredictionsApiDeparture], groupSize: Int = 2)
+    -> [Self]
+  {
+    stride(from: 0, to: departures.count, by: groupSize)
+      .map { i in
+        let deps = Array(departures[i..<Swift.min(i + groupSize, departures.count)])
+        return Self(departures: deps)
+      }
   }
 }

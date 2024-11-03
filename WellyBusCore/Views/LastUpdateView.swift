@@ -6,19 +6,20 @@ struct LastUpdateView: View {
 
   var body: some View {
     HStack(alignment: .center, spacing: 4) {
-      Text("Last update:")
+      Text("Last refresh:")
         .font(.caption)
-        .fontWeight(.semibold)
 
       if refreshInProgress {
         Text("...")
           .font(.caption)
       } else {
-        Image(systemName: "timer")
-          .imageScale(.small)
-        Text(lastUpdatedAt, style: .timer)
+        Text(lastUpdatedAt, style: .relative)
           .font(.caption)
       }
+
+      Text("ago")
+        .font(.caption)
     }
+    .frame(maxWidth: .infinity, alignment: .leading)
   }
 }

@@ -1,9 +1,3 @@
-//
-//  WellyBusWidgetTimelineProvider.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 01/11/2024.
-//
 import WidgetKit
 
 struct WellyBusWidgetTimelineProvider: TimelineProvider {

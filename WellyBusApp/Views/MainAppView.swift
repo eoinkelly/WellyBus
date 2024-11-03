@@ -58,8 +58,6 @@ struct MainAppView: View {
         .buttonStyle(.borderedProminent)
       }
 
-      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
-
       ScrollView {
         Grid {
           ForEach(stopPredictions) { stopPrediction in
@@ -81,6 +79,10 @@ struct MainAppView: View {
           }
         }
       }
+
+      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
+      Divider()
+      HelpView()
     }
     .padding([.leading, .trailing], 16)
   }

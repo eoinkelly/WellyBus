@@ -17,7 +17,7 @@ struct StopPredictionView: View {
       Divider()
       StopPredictionHeaderView(
         stopPrediction: stopPrediction, fontStyle: .headline, imageScale: .large)
-      ConciseDeparturesView(departures: stopPrediction.departures, numDeparturesToShow: 12)
+      ConciseDeparturesView(departures: stopPrediction.departures, maxDeparturesToShow: 6)
     }
   }
 }

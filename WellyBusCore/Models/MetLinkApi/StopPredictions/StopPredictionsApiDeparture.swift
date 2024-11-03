@@ -1,9 +1,3 @@
-//
-//  BusDepartureApiResponse.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 26/10/2024.
-//
 import Foundation
 
 struct StopPredictionsApiDeparture: Decodable, Identifiable {
@@ -35,6 +29,14 @@ struct StopPredictionsApiDeparture: Decodable, Identifiable {
   struct Departure: Decodable {
     let aimed: String
     let expected: String?
+
+    var aimedDate: Date? {
+      ISO8601DateFormatter().date(from: aimed)
+    }
+
+    var expectedDate: Date? {
+      ISO8601DateFormatter().date(from: (expected ?? ""))
+    }
 
     func bestGuess() -> Date {
       if let x = expected {

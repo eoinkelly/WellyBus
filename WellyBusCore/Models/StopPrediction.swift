@@ -1,9 +1,3 @@
-//
-//  StopPrediction.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 29/10/2024.
-//
 import Foundation
 
 class StopPrediction: Identifiable {
