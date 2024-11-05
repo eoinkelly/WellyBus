@@ -1,10 +1,3 @@
-//
-//  LargeTextView.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 26/10/2024.
-//
-
 import SwiftUI
 
 struct MainAppView: View {
@@ -13,12 +6,20 @@ struct MainAppView: View {
   @State private var refreshButtonText = "Refresh"
   @State private var refreshInProgress = false
 
-  //  private func refresh() {
-  //    Task {
-  //      stopPredictions = await BusStopPredictor().stopPredictions()
-  //      lastFetchedAt = Date()
-  //    }
-  //  }
+  @Environment(\.scenePhase) var scenePhase
+
+  private func refresh() {
+    Task {
+      print("in refresh task")
+      let oldButtonText = refreshButtonText
+      refreshButtonText = "      ..."
+      refreshInProgress = true
+      stopPredictions = await BusStopPredictor().stopPredictions()
+      lastUpdatedAt = Date()
+      refreshButtonText = oldButtonText
+      refreshInProgress = false
+    }
+  }
 
   var body: some View {
     VStack(alignment: .center) {
@@ -35,14 +36,7 @@ struct MainAppView: View {
 
         Button(
           action: {
-            Task {
-              refreshButtonText = "     ..."
-              refreshInProgress = true
-              stopPredictions = await BusStopPredictor().stopPredictions()
-              lastUpdatedAt = Date()
-              refreshButtonText = "Refresh"
-              refreshInProgress = false
-            }
+            refresh()
           }
         ) {
           HStack(alignment: .center) {
@@ -51,6 +45,8 @@ struct MainAppView: View {
             Text(refreshButtonText)
               .frame(alignment: .leading)
           }
+          .padding([.leading, .trailing], 10)
+          .padding([.top, .bottom], 8)
           .frame(minWidth: 100, alignment: .leading)
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -66,16 +62,9 @@ struct MainAppView: View {
             }
           }
         }
-        .onAppear {
-          // TODO: figure out how to share this logic in one place
-          print("onAppeaar XXXXXXXX")
-          Task {
-            refreshButtonText = "..."
-            refreshInProgress = true
-            stopPredictions = await BusStopPredictor().stopPredictions()
-            lastUpdatedAt = Date()
-            refreshButtonText = "Refresh"
-            refreshInProgress = false
+        .onChange(of: scenePhase, initial: true) { _oldPhase, newPhase in
+          if newPhase == .active {
+            refresh()
           }
         }
       }

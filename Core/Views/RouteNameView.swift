@@ -10,16 +10,22 @@ struct RouteNameView: View {
     if departure.departure.expectedDate != nil {
       self.highlightColor = .green
     } else {
-      self.highlightColor = Color(red: 0.95, green: 0.95, blue: 0.95)
+      self.highlightColor = .gray
     }
   }
 
   var body: some View {
-    Text(departure.serviceId)
-      .font(.body)
-      .foregroundStyle(.black)
-      .padding(2)
-      .background(highlightColor)
-      .cornerRadius(3)
+    HStack {
+      Rectangle()
+        .fill(highlightColor)
+        .frame(width: 6)
+        .cornerRadius(3)
+
+      Text(departure.serviceId)
+        .padding(2)
+        .foregroundStyle(.black)
+        .background(.yellow)
+        .cornerRadius(4)
+    }
   }
 }
