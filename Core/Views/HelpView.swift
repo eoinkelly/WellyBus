@@ -9,7 +9,7 @@ struct HelpView: View {
     """
 
   let scheduledRawHelp: String = """
-    Bus is scheduled.
+    Scheduled bus departure time.
     """
 
   init() {
@@ -22,16 +22,16 @@ struct HelpView: View {
       HStack(alignment: .center, spacing: 4) {
         Rectangle()
           .fill(AppColors.trackedBusColor.color)
-          .frame(width: 6, height: 20)
+          .frame(width: 6, height: 16)
           .cornerRadius(3)
         Text(formattedHelpText)
           .font(.footnote)
       }
 
-      HStack(alignment: .top, spacing: 4) {
+      HStack(alignment: .center, spacing: 4) {
         Rectangle()
           .fill(AppColors.scheduledBusColor.color)
-          .frame(width: 6, height: 20)
+          .frame(width: 6, height: 16)
           .cornerRadius(3)
 
         Text(formattedScheduledHelpText)

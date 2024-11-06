@@ -2,8 +2,8 @@ import SwiftUI
 
 struct StopPredictionHeaderView: View {
   @State public var stopPrediction: StopPrediction
-  @State public var fontStyle: Font = .caption
-  @State public var imageScale: Image.Scale = .small
+  @State public var fontStyle: Font = .title
+  @State public var imageScale: Image.Scale = .large
 
   var body: some View {
     HStack(alignment: .center, spacing: 4) {
@@ -29,5 +29,6 @@ struct StopPredictionHeaderView: View {
           .font(fontStyle)
       }
     }
+    .padding([.top], 24)
   }
 }

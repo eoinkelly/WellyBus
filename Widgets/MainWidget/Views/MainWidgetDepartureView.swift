@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConciseDepartureView: View {
+struct MainWidgetDepartureView: View {
   @State public var departure: StopPredictionsApiDeparture
   @State private var stopPrediction: StopPrediction
 

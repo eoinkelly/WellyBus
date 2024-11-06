@@ -23,36 +23,39 @@ struct MainAppView: View {
 
   var body: some View {
     VStack(alignment: .center) {
-      HStack(alignment: .center) {
-        HStack {
-          Image(systemName: "bus.fill")
-            .foregroundStyle(.yellow)
-            .backgroundStyle(.red)
-
-          Text("Welly Bus")
-            .font(.title3)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-
-        Button(
-          action: {
-            refresh()
-          }
-        ) {
-          HStack(alignment: .center) {
-            Image(systemName: "arrow.clockwise")
-              .frame(alignment: .leading)
-            Text(refreshButtonText)
-              .frame(alignment: .leading)
-          }
-          .padding([.leading, .trailing], 10)
-          .padding([.top, .bottom], 8)
-          .frame(minWidth: 100, alignment: .leading)
-        }
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .foregroundStyle(.black)
-        .buttonStyle(.borderedProminent)
-      }
+      Text("Welly Bus")
+        .font(.title3)
+        .fontWeight(.bold)
+      //      HStack(alignment: .center) {
+      //        HStack {
+      //          Image(systemName: "bus.fill")
+      //            .foregroundStyle(.yellow)
+      //            .backgroundStyle(.red)
+      //
+      //          Text("Welly Bus")
+      //            .font(.title3)
+      //        }
+      //        .frame(maxWidth: .infinity, alignment: .leading)
+      //
+      //        Button(
+      //          action: {
+      //            refresh()
+      //          }
+      //        ) {
+      //          HStack(alignment: .center) {
+      //            Image(systemName: "arrow.clockwise")
+      //              .frame(alignment: .leading)
+      //            Text(refreshButtonText)
+      //              .frame(alignment: .leading)
+      //          }
+      //          .padding([.leading, .trailing], 10)
+      //          .padding([.top, .bottom], 8)
+      //          .frame(minWidth: 100, alignment: .leading)
+      //        }
+      //        .frame(maxWidth: .infinity, alignment: .trailing)
+      //        .foregroundStyle(.black)
+      //        .buttonStyle(.borderedProminent)
+      //      }
 
       ScrollView {
         Grid {
@@ -69,6 +72,9 @@ struct MainAppView: View {
         }
       }
       .refreshable {
+        refresh()
+      }
+      .onAppear {
         refresh()
       }
 

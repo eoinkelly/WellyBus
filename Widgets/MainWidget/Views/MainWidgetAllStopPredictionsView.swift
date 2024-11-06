@@ -10,9 +10,9 @@ struct MainWidgetAllStopPredictionsView: View {
         GridRow {
           VStack(alignment: .leading, spacing: 0) {
             Divider()
-            StopPredictionHeaderView(stopPrediction: stopPrediction)
+            MainWidgetStopPredictionHeaderView(stopPrediction: stopPrediction)
               .padding([.bottom], 4)
-            ConciseDeparturesView(stopPrediction: stopPrediction, maxDeparturesToShow: 4)
+            MainWidgetDeparturesView(stopPrediction: stopPrediction, maxDeparturesToShow: 4)
           }
         }
       }

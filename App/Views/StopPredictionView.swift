@@ -14,10 +14,11 @@ struct StopPredictionView: View {
 
   var body: some View {
     VStack(alignment: .leading) {
-      Divider()
+      //      Divider()
       StopPredictionHeaderView(
         stopPrediction: stopPrediction, fontStyle: .headline, imageScale: .large)
-      ConciseDeparturesView(stopPrediction: stopPrediction, maxDeparturesToShow: 6)
+      //      .border(.red)
+      AllDeparturesForStopView(stopPrediction: stopPrediction, maxDeparturesToShow: 6)
     }
   }
 }

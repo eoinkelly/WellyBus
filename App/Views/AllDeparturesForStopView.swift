@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConciseDeparturesView: View {
+struct AllDeparturesForStopView: View {
   @State private var rows: [Row]
   @State private var stopPrediction: StopPrediction
 
@@ -12,14 +12,15 @@ struct ConciseDeparturesView: View {
   }
 
   var body: some View {
-    Grid(alignment: .leading, horizontalSpacing: 4, verticalSpacing: 4) {
+    Grid(alignment: .leading, horizontalSpacing: 24, verticalSpacing: 8) {
       ForEach(rows) { row in
         GridRow {
           ForEach(row.departures) { departure in
-            ConciseDepartureView(stopPrediction: stopPrediction, departure: departure)
+            DepartureView(stopPrediction: stopPrediction, departure: departure)
               .frame(maxWidth: .infinity)
           }
         }
+        //        .border(.red)
       }
     }
   }
