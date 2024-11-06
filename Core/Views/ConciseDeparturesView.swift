@@ -2,10 +2,12 @@ import SwiftUI
 
 struct ConciseDeparturesView: View {
   @State private var rows: [Row]
+  @State private var stopPrediction: StopPrediction
 
-  init(departures: [StopPredictionsApiDeparture], maxDeparturesToShow: Int) {
-    let visibleDepartures = Array(departures.prefix(maxDeparturesToShow))
+  init(stopPrediction: StopPrediction, maxDeparturesToShow: Int) {
+    self.stopPrediction = stopPrediction
 
+    let visibleDepartures = Array(stopPrediction.departures.prefix(maxDeparturesToShow))
     self.rows = Row.create(from: visibleDepartures)
   }
 
@@ -14,7 +16,7 @@ struct ConciseDeparturesView: View {
       ForEach(rows) { row in
         GridRow {
           ForEach(row.departures) { departure in
-            ConciseDepartureView(departure: departure)
+            ConciseDepartureView(stopPrediction: stopPrediction, departure: departure)
               .frame(maxWidth: .infinity)
           }
         }

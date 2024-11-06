@@ -1,10 +1,10 @@
 import Foundation
 
 struct BusStopPredictor {
-  func stopPredictions() async -> [StopPrediction] {
+  func refreshPredictions() async -> [StopPrediction] {
     var predictions: [StopPrediction] = []
 
-    for stop in Config.shared.busStopsOfInterest {
+    for stop in AppConfig.shared.busStopsOfInterest {
       let p = await StopPrediction(stopConfig: stop)
       predictions.append(p)
     }

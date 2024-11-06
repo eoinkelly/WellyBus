@@ -12,7 +12,7 @@ struct MainWidgetAllStopPredictionsView: View {
             Divider()
             StopPredictionHeaderView(stopPrediction: stopPrediction)
               .padding([.bottom], 4)
-            ConciseDeparturesView(departures: stopPrediction.departures, maxDeparturesToShow: 4)
+            ConciseDeparturesView(stopPrediction: stopPrediction, maxDeparturesToShow: 4)
           }
         }
       }

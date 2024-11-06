@@ -17,7 +17,7 @@ class MetlinkApi {
     self.apiKeyValue = metLinkApiKey
   }
 
-  func predictedDeparturesForStop(_ stop: StopConfig) async
+  func predictedDeparturesForStop(_ stop: BusStopConfig) async
     -> [StopPredictionsApiDeparture]
   {
     do {
@@ -47,7 +47,7 @@ class MetlinkApi {
     }
   }
 
-  func predictedDepartures(forStops stops: [StopConfig], urlSession: URLSession = .shared)
+  func predictedDepartures(forStops stops: [BusStopConfig], urlSession: URLSession = .shared)
     -> AsyncThrowingStream<[StopPredictionsApiDeparture], Error>
   {
     var index = 0

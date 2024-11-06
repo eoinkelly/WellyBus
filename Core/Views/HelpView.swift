@@ -5,11 +5,11 @@ struct HelpView: View {
   let formattedScheduledHelpText: AttributedString
 
   let rawHelpText: String = """
-    Bus is live tracked
+    Bus is reporting real-time location to MetLink.
     """
 
   let scheduledRawHelp: String = """
-    Bus is scheduled 
+    Bus is scheduled.
     """
 
   init() {
@@ -21,7 +21,7 @@ struct HelpView: View {
     VStack(alignment: .leading, spacing: 4) {
       HStack(alignment: .center, spacing: 4) {
         Rectangle()
-          .fill(.green)
+          .fill(AppColors.trackedBusColor.color)
           .frame(width: 6, height: 20)
           .cornerRadius(3)
         Text(formattedHelpText)
@@ -30,7 +30,7 @@ struct HelpView: View {
 
       HStack(alignment: .top, spacing: 4) {
         Rectangle()
-          .fill(.gray)
+          .fill(AppColors.scheduledBusColor.color)
           .frame(width: 6, height: 20)
           .cornerRadius(3)
 

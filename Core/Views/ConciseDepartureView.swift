@@ -2,21 +2,16 @@ import SwiftUI
 
 struct ConciseDepartureView: View {
   @State public var departure: StopPredictionsApiDeparture
-  @State public var highlightColor: Color
+  @State private var stopPrediction: StopPrediction
 
-  init(departure: StopPredictionsApiDeparture) {
+  init(stopPrediction: StopPrediction, departure: StopPredictionsApiDeparture) {
     self.departure = departure
-
-    if departure.departure.expectedDate != nil {
-      self.highlightColor = .green
-    } else {
-      self.highlightColor = Color(red: 0.95, green: 0.95, blue: 0.95)
-    }
+    self.stopPrediction = stopPrediction
   }
 
   var body: some View {
     HStack(alignment: .center) {
-      RouteNameView(departure: departure)
+      RouteNameView(stopPrediction: stopPrediction, departure: departure)
 
       HStack(alignment: .center, spacing: 4) {
         if let expected = departure.departure.expectedDate {

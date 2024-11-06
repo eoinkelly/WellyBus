@@ -14,7 +14,7 @@ struct MainAppView: View {
       let oldButtonText = refreshButtonText
       refreshButtonText = "      ..."
       refreshInProgress = true
-      stopPredictions = await BusStopPredictor().stopPredictions()
+      stopPredictions = await BusStopPredictor().refreshPredictions()
       lastUpdatedAt = Date()
       refreshButtonText = oldButtonText
       refreshInProgress = false
@@ -67,6 +67,9 @@ struct MainAppView: View {
             refresh()
           }
         }
+      }
+      .refreshable {
+        refresh()
       }
 
       LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
