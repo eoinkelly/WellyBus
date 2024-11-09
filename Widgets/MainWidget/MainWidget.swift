@@ -18,6 +18,6 @@ struct MainWidget: Widget {
 #Preview(as: .systemLarge) {
   MainWidget()
 } timeline: {
-  let stopPredictions = await BusStopPredictor().refreshPredictions()
-  MainWidgetTimelineEntry(date: Date(), stopPredictions: stopPredictions)
+  let busStops = await BusStopService.shared.refreshBusStops()
+  MainWidgetTimelineEntry(date: Date(), busStops: busStops)
 }

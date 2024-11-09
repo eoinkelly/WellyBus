@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct StopPredictionHeaderView: View {
-  @State public var stopPrediction: StopPrediction
+  @State public var busStop: BusStop
   @State public var fontStyle: Font = .title
   @State public var imageScale: Image.Scale = .large
 
@@ -9,14 +9,14 @@ struct StopPredictionHeaderView: View {
     HStack(alignment: .center, spacing: 4) {
       Image(systemName: "location")
         .imageScale(imageScale)
-      Text(stopPrediction.name)
+      Text(busStop.nickName)
         .font(fontStyle)
         .padding(0)
 
       Image(systemName: "arrow.forward")
         .imageScale(imageScale)
 
-      switch stopPrediction.stopConfig.direction {
+      switch busStop.direction {
       case .toHome:
         Image(systemName: "house")
           .imageScale(imageScale)

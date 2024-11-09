@@ -2,5 +2,5 @@ import WidgetKit
 
 struct MainWidgetTimelineEntry: TimelineEntry {
   let date: Date
-  let stopPredictions: [StopPrediction]
+  let busStops: [BusStop]
 }

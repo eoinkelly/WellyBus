@@ -1,22 +1,22 @@
 import SwiftUI
 
 struct MainWidgetDepartureView: View {
-  @State public var departure: StopPredictionsApiDeparture
-  @State private var stopPrediction: StopPrediction
+  @State public var departure: BusDeparture
+  @State public var busStop: BusStop
 
-  init(stopPrediction: StopPrediction, departure: StopPredictionsApiDeparture) {
+  init(busStop: BusStop, departure: BusDeparture) {
     self.departure = departure
-    self.stopPrediction = stopPrediction
+    self.busStop = busStop
   }
 
   var body: some View {
     HStack(alignment: .center) {
-      RouteNameView(stopPrediction: stopPrediction, departure: departure)
+      RouteNameView(busStop: busStop, departure: departure)
 
       HStack(alignment: .center, spacing: 4) {
-        if let expected = departure.departure.expectedDate {
+        if let expected = departure.expectedAt {
           DepartureTimeView(departAt: expected)
-        } else if let aimed = departure.departure.aimedDate {
+        } else if let aimed = departure.scheduledAt {
           DepartureTimeView(departAt: aimed)
         } else {
           Text("UNKNOWN")

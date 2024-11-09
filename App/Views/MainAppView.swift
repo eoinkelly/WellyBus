@@ -1,67 +1,24 @@
 import SwiftUI
 
 struct MainAppView: View {
-  @State private var stopPredictions: [StopPrediction] = []
+  @State private var busStops: [BusStop] = []
   @State private var lastUpdatedAt = Date()
-  @State private var refreshButtonText = "Refresh"
   @State private var refreshInProgress = false
+  @State private var scheduledTimers: [Timer] = []
 
   @Environment(\.scenePhase) var scenePhase
-
-  private func refresh() {
-    Task {
-      print("in refresh task")
-      let oldButtonText = refreshButtonText
-      refreshButtonText = "      ..."
-      refreshInProgress = true
-      stopPredictions = await BusStopPredictor().refreshPredictions()
-      lastUpdatedAt = Date()
-      refreshButtonText = oldButtonText
-      refreshInProgress = false
-    }
-  }
 
   var body: some View {
     VStack(alignment: .center) {
       Text("Welly Bus")
         .font(.title3)
         .fontWeight(.bold)
-      //      HStack(alignment: .center) {
-      //        HStack {
-      //          Image(systemName: "bus.fill")
-      //            .foregroundStyle(.yellow)
-      //            .backgroundStyle(.red)
-      //
-      //          Text("Welly Bus")
-      //            .font(.title3)
-      //        }
-      //        .frame(maxWidth: .infinity, alignment: .leading)
-      //
-      //        Button(
-      //          action: {
-      //            refresh()
-      //          }
-      //        ) {
-      //          HStack(alignment: .center) {
-      //            Image(systemName: "arrow.clockwise")
-      //              .frame(alignment: .leading)
-      //            Text(refreshButtonText)
-      //              .frame(alignment: .leading)
-      //          }
-      //          .padding([.leading, .trailing], 10)
-      //          .padding([.top, .bottom], 8)
-      //          .frame(minWidth: 100, alignment: .leading)
-      //        }
-      //        .frame(maxWidth: .infinity, alignment: .trailing)
-      //        .foregroundStyle(.black)
-      //        .buttonStyle(.borderedProminent)
-      //      }
 
       ScrollView {
         Grid {
-          ForEach(stopPredictions) { stopPrediction in
+          ForEach(busStops) { busStop in
             GridRow {
-              StopPredictionView(stopPrediction: stopPrediction)
+              StopPredictionView(busStop: busStop)
             }
           }
         }
@@ -72,10 +29,16 @@ struct MainAppView: View {
         }
       }
       .refreshable {
+        // when the user pulls to refresh, we want to clear all existing timers and refresh
+        // the data (which will schedule a new timer for the next refresh)
+        clearAllTimers()
         refresh()
       }
       .onAppear {
         refresh()
+      }
+      .onDisappear {
+        clearAllTimers()
       }
 
       LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
@@ -83,6 +46,51 @@ struct MainAppView: View {
       HelpView()
     }
     .padding([.leading, .trailing], 16)
+  }
+
+  private func scheduleNextRefresh(at nextRefreshAt: Date) {
+    print("Scheduling next refresh for \(nextRefreshAt)")
+
+    let timer = Timer.scheduledTimer(
+      withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
+      repeats: false
+    ) { _ in
+      print("Running scheduled refresh")
+      refresh()
+    }
+
+    scheduledTimers.append(timer)
+  }
+
+  private func clearAllTimers() {
+    print("Clearing all timers")
+
+    for timer in scheduledTimers {
+      timer.invalidate()
+    }
+
+    scheduledTimers.removeAll()
+  }
+
+  private func refresh() {
+    Task {
+      print("in refresh task")
+      markRefreshInProgress()
+
+      busStops = await BusStopService.shared.refreshBusStops()
+      scheduleNextRefresh(at: BusStopService.shared.nextDeparture(for: busStops))
+
+      markRefreshComplete()
+    }
+  }
+
+  private func markRefreshInProgress() {
+    refreshInProgress = true
+  }
+
+  private func markRefreshComplete() {
+    refreshInProgress = false
+    lastUpdatedAt = Date()
   }
 }
 

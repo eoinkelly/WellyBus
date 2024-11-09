@@ -10,6 +10,8 @@
 		4991E77A2CD426EA008A0E03 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3643F2CD1E4F200BF7104 /* WidgetKit.framework */; };
 		4991E77B2CD426EA008A0E03 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F364412CD1E4F200BF7104 /* SwiftUI.framework */; };
 		4991E7862CD426EB008A0E03 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4991E7792CD426EA008A0E03 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		49F39ED92CDE951600C4B364 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 49F39ED82CDE951600C4B364 /* Blackbird */; };
+		49F39EDB2CDE956700C4B364 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 49F39EDA2CDE956700C4B364 /* Blackbird */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,9 +99,9 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
-		4991E7922CD43012008A0E03 /* Core */ = {
+		4991E7922CD43012008A0E03 /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Core;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		4991E7A22CD43105008A0E03 /* Docs */ = {
@@ -119,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F39ED92CDE951600C4B364 /* Blackbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F39EDB2CDE956700C4B364 /* Blackbird in Frameworks */,
 				4991E77B2CD426EA008A0E03 /* SwiftUI.framework in Frameworks */,
 				4991E77A2CD426EA008A0E03 /* WidgetKit.framework in Frameworks */,
 			);
@@ -156,7 +160,7 @@
 				492642752CCC8A9400C6161C /* README.md */,
 				492642772CCC8C8800C6161C /* TODO.gitignored.md */,
 				49F364362CD1722900BF7104 /* Scripts */,
-				4991E7922CD43012008A0E03 /* Core */,
+				4991E7922CD43012008A0E03 /* Shared */,
 				492642342CCC202B00C6161C /* App */,
 				4991E77C2CD426EA008A0E03 /* Widgets */,
 				492642472CCC202C00C6161C /* Tests */,
@@ -206,10 +210,11 @@
 			);
 			fileSystemSynchronizedGroups = (
 				492642342CCC202B00C6161C /* App */,
-				4991E7922CD43012008A0E03 /* Core */,
+				4991E7922CD43012008A0E03 /* Shared */,
 			);
 			name = WellyBus;
 			packageProductDependencies = (
+				49F39ED82CDE951600C4B364 /* Blackbird */,
 			);
 			productName = WellyBus;
 			productReference = 492642322CCC202B00C6161C /* WellyBus.app */;
@@ -275,10 +280,11 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4991E77C2CD426EA008A0E03 /* Widgets */,
-				4991E7922CD43012008A0E03 /* Core */,
+				4991E7922CD43012008A0E03 /* Shared */,
 			);
 			name = WidgetsExtension;
 			packageProductDependencies = (
+				49F39EDA2CDE956700C4B364 /* Blackbird */,
 			);
 			productName = WidgetsExtension;
 			productReference = 4991E7792CD426EA008A0E03 /* WidgetsExtension.appex */;
@@ -320,6 +326,7 @@
 			mainGroup = 492642292CCC202B00C6161C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 492642332CCC202B00C6161C /* Products */;
@@ -791,6 +798,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcoarment/Blackbird.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49F39ED82CDE951600C4B364 /* Blackbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */;
+			productName = Blackbird;
+		};
+		49F39EDA2CDE956700C4B364 /* Blackbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */;
+			productName = Blackbird;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4926422A2CCC202B00C6161C /* Project object */;
 }

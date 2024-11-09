@@ -1,11 +1,6 @@
 import SwiftUI
 
 struct BusStopConfig: Hashable {
-  enum BusDirection: String, Codable {
-    case toTown
-    case toHome
-  }
-
   struct BusRouteConfig: Hashable {
     let name: String
     let foregroundColor: Color

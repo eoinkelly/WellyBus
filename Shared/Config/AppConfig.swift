@@ -20,25 +20,25 @@ class AppConfig {
         friendlyName: "Up the top",
         stopId: "3772",
         followedBusRoutes: followedBusRoutes,
-        direction: BusStopConfig.BusDirection.toTown
+        direction: BusDirection.toTown
       ),
       BusStopConfig(
         friendlyName: "Down the bottom",
         stopId: "3546",
         followedBusRoutes: followedBusRoutes,
-        direction: BusStopConfig.BusDirection.toTown
+        direction: BusDirection.toTown
       ),
       BusStopConfig(
         friendlyName: "Outside DoC",
         stopId: "5006",
         followedBusRoutes: followedBusRoutes,
-        direction: BusStopConfig.BusDirection.toHome
+        direction: BusDirection.toHome
       ),
       BusStopConfig(
         friendlyName: "Lambton Quay",
         stopId: "5014",
         followedBusRoutes: followedBusRoutes,
-        direction: BusStopConfig.BusDirection.toHome
+        direction: BusDirection.toHome
       ),
     ]
   }

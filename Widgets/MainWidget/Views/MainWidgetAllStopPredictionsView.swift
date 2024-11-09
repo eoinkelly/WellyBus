@@ -6,13 +6,13 @@ struct MainWidgetAllStopPredictionsView: View {
 
   var body: some View {
     Grid {
-      ForEach(entry.stopPredictions) { stopPrediction in
+      ForEach(entry.busStops) { busStop in
         GridRow {
           VStack(alignment: .leading, spacing: 0) {
             Divider()
-            MainWidgetStopPredictionHeaderView(stopPrediction: stopPrediction)
+            MainWidgetStopPredictionHeaderView(busStop: busStop)
               .padding([.bottom], 4)
-            MainWidgetDeparturesView(stopPrediction: stopPrediction, maxDeparturesToShow: 4)
+            MainWidgetDeparturesView(busStop: busStop)
           }
         }
       }

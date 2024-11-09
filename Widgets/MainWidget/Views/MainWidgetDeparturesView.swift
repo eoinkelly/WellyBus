@@ -2,13 +2,11 @@ import SwiftUI
 
 struct MainWidgetDeparturesView: View {
   @State private var rows: [Row]
-  @State private var stopPrediction: StopPrediction
+  @State public var busStop: BusStop
 
-  init(stopPrediction: StopPrediction, maxDeparturesToShow: Int) {
-    self.stopPrediction = stopPrediction
-
-    let visibleDepartures = Array(stopPrediction.departures.prefix(maxDeparturesToShow))
-    self.rows = Row.create(from: visibleDepartures)
+  init(busStop: BusStop) {
+    self.busStop = busStop
+    self.rows = Row.create(from: busStop.departures)
   }
 
   var body: some View {
@@ -16,7 +14,7 @@ struct MainWidgetDeparturesView: View {
       ForEach(rows) { row in
         GridRow {
           ForEach(row.departures) { departure in
-            MainWidgetDepartureView(stopPrediction: stopPrediction, departure: departure)
+            MainWidgetDepartureView(busStop: busStop, departure: departure)
               .frame(maxWidth: .infinity)
           }
         }
@@ -27,9 +25,9 @@ struct MainWidgetDeparturesView: View {
 
 private struct Row: Identifiable {
   let id = UUID()
-  let departures: [StopPredictionsApiDeparture]
+  let departures: [BusDeparture]
 
-  static func create(from departures: [StopPredictionsApiDeparture], groupSize: Int = 2)
+  static func create(from departures: [BusDeparture], groupSize: Int = 2)
     -> [Self]
   {
     stride(from: 0, to: departures.count, by: groupSize)
