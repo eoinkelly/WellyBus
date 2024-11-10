@@ -18,6 +18,6 @@ struct MainWidget: Widget {
 #Preview(as: .systemLarge) {
   MainWidget()
 } timeline: {
-  let busStops = await BusStopService.shared.refreshBusStops()
+  let busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
   MainWidgetTimelineEntry(date: Date(), busStops: busStops)
 }

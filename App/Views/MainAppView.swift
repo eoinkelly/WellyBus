@@ -49,17 +49,19 @@ struct MainAppView: View {
   }
 
   private func scheduleNextRefresh(at nextRefreshAt: Date) {
-    print("Scheduling next refresh for \(nextRefreshAt)")
+    Debug.dumpTime(time: nextRefreshAt, message: "Scheduling next refresh for")
 
     let timer = Timer.scheduledTimer(
       withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
       repeats: false
     ) { _ in
-      print("Running scheduled refresh")
+      print("Running scheduled refresh closure")
       refresh()
     }
 
+    clearAllTimers()
     scheduledTimers.append(timer)
+    print("\(scheduledTimers.count) timers now scheduled")
   }
 
   private func clearAllTimers() {
@@ -74,11 +76,19 @@ struct MainAppView: View {
 
   private func refresh() {
     Task {
-      print("in refresh task")
+      print("Running refresh Task")
       markRefreshInProgress()
 
-      busStops = await BusStopService.shared.refreshBusStops()
-      scheduleNextRefresh(at: BusStopService.shared.nextDeparture(for: busStops))
+      busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
+
+      if let nextDepartureAt = BusStopService.shared.nextDeparture(for: busStops) {
+        scheduleNextRefresh(at: nextDepartureAt)
+      } else {
+        let fallBack = Date().addingTimeInterval(5 * 60)  // 5 mins
+        Debug.dumpTime(
+          time: fallBack, message: "No next departure found at any stop. Fallback refresh at")
+        scheduleNextRefresh(at: fallBack)
+      }
 
       markRefreshComplete()
     }

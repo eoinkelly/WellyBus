@@ -9,4 +9,8 @@ struct BusDeparture: Identifiable {
   let expectedAt: Date?
   let foregroundColor: Color
   let backgroundColor: Color
+
+  var bestDepartureTimeGuess: Date? {
+    expectedAt ?? scheduledAt
+  }
 }

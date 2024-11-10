@@ -2,9 +2,9 @@ import Foundation
 
 struct BusStopService {
   static let shared = BusStopService()
+  static let maxDeparturesToShowPerStop = 6
 
-  // fetchNewBusStops
-  func refreshBusStops() async -> [BusStop] {
+  func fetchBusStopsFromMetlink() async -> [BusStop] {
     var stops: [BusStop] = []
 
     for stopConfig in AppConfig.shared.busStopsOfInterest {
@@ -16,16 +16,20 @@ struct BusStopService {
         allDepartures
         .filter { followedBusRouteNames.contains($0.serviceId) }
         .map { departure in
-          BusDeparture(
+          let route = AppConfig.shared.followedBusRoutes.first(where: {
+            $0.name == departure.serviceId
+          })!
+
+          return BusDeparture(
             serviceId: departure.serviceId,
             direction: departure.direction,
             scheduledAt: departure.departure.aimedDate,
             expectedAt: departure.departure.expectedDate,
-            foregroundColor: .white,
-            backgroundColor: .red
+            foregroundColor: route.foregroundColor,
+            backgroundColor: route.backgroundColor
           )
         }
-        .prefix(6)
+        .prefix(Self.maxDeparturesToShowPerStop)
       let departures = Array(departuresSlice)
 
       let stop = BusStop(
@@ -41,10 +45,26 @@ struct BusStopService {
     return stops
   }
 
-  func nextDeparture(for: [BusStop]) -> Date {
-    // TODO: make real
-    //    return Date()
-    // return time 1 minute from now
-    Calendar.current.date(byAdding: .minute, value: 1, to: Date())!
+  func nextDeparture(for stops: [BusStop]) -> Date? {
+
+    // TODO: tidy this up, is messy af
+    let x =
+      stops
+      .compactMap({ stop in
+        if let nextDeparture = stop.departures.compactMap({ $0.bestDepartureTimeGuess }).min() {
+          return (stop.nickName, nextDeparture)
+        } else {
+          return nil
+        }
+      }
+      )
+      .min(by: { $0.1 < $1.1 })
+
+    if let (name, depTime) = x {
+      Debug.dumpTime(time: depTime, message: "Next depature of any bus is at stop '\(name)` in ")
+      return depTime
+    }
+
+    return nil
   }
 }
