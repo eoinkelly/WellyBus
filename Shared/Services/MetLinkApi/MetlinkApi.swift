@@ -1,118 +1,49 @@
-//
-//  MetlinkApi.swift
-//  WellyBus
-//
-//  Created by Eoin Kelly on 27/10/2024.
-//
-
 import Foundation
 
-class MetlinkApi {
-  static let shared = MetlinkApi()
+enum MetlinkAPIError: Error {
+  case error
+  case badStopName
+}
 
-  let apiKeyValue: String
-  let apiKeyHttpHeaderName: String = "x-api-key"
+struct MetlinkAPI {
+  static let shared = MetlinkAPI()
 
-  private init() {
-    self.apiKeyValue = metLinkApiKey
+  private enum Constants {
+    static let apiKeyHeader = "x-api-key"
+    static let baseURL = URL(string: "https://api.opendata.metlink.org.nz/v1")!
   }
 
-  func predictedDeparturesFor(stopName: String) async
+  private let apiKey: String
+  private let session: URLSession
+
+  private init(session: URLSession = .shared) {
+    self.apiKey = metLinkApiKey
+    self.session = session
+  }
+
+  func predictedDeparturesFor(stopName: String) async throws
     -> [StopPredictionsApiDeparture]
   {
     do {
-      var url = URL(string: "https://api.opendata.metlink.org.nz/v1/stop-predictions")!
-
-      url.append(queryItems: [URLQueryItem(name: "stop_id", value: stopName)])
-
-      var request = URLRequest(url: url)
-      request.addValue(apiKeyValue, forHTTPHeaderField: apiKeyHttpHeaderName)
-
+      let request = buildStopPredictionRequest(for: stopName)
       let (data, _) = try await URLSession.shared.data(for: request)
-
-      //      if let dataString = String(data: data, encoding: .utf8) {
-      //        print("----------------------")
-      //        print(dataString)
-      //        print("----------------------")
-      //      } else {
-      //        print("Failed to convert data to string")
-      //      }
-
       let response = try JSONDecoder().decode(StopPredictionsApiResponse.self, from: data)
       return response.departures
-
     } catch {
       logger.error("Error fetching departure predictions. stop=\(stopName) error=\(error)")
-      return []
+      throw MetlinkAPIError.error
     }
   }
 
-  //  func predictedDepartures(forStops stops: [BusStopConfig], urlSession: URLSession = .shared)
-  //    -> AsyncThrowingStream<[StopPredictionsApiDeparture], Error>
-  //  {
-  //    var index = 0
-  //
-  //    return AsyncThrowingStream {
-  //      guard index < stops.count else {
-  //        return nil
-  //      }
-  //
-  //      let stop = stops[index]
-  //      index += 1
-  //
-  //      var url = URL(string: "https://api.opendata.metlink.org.nz/v1/stop-predictions")!
-  //      url.append(queryItems: [URLQueryItem(name: "stop_id", value: stop.stopId)])
-  //      var request = URLRequest(url: url)
-  //      request.addValue(self.apiKeyValue, forHTTPHeaderField: self.apiKeyHttpHeaderName)
-  //
-  //      let (data, _) = try await urlSession.data(for: request)
-  //      let response = try JSONDecoder().decode(StopPredictionsApiResponse.self, from: data)
-  //      return response.departures
-  //    }
-  //
-  //    do {
-  //      var url = URL(string: "https://api.opendata.metlink.org.nz/v1/stop-predictions")!
-  //
-  //      url.append(queryItems: [URLQueryItem(name: "stop_id", value: stop.stopId)])
-  //
-  //      var request = URLRequest(url: url)
-  //      request.addValue(apiKeyValue, forHTTPHeaderField: apiKeyHttpHeaderName)
-  //
-  //      let (data, _) = try await URLSession.shared.data(for: request)
-  //
-  //      //      if let dataString = String(data: data, encoding: .utf8) {
-  //      //        print("----------------------")
-  //      //        print(dataString)
-  //      //        print("----------------------")
-  //      //      } else {
-  //      //        print("Failed to convert data to string")
-  //      //      }
-  //
-  //      let response = try JSONDecoder().decode(StopPredictionsApiResponse.self, from: data)
-  //      return response.departures
-  //
-  //    } catch {
-  //      logger.error("Error fetching departure predictions. stop=\(stop.stopId) error=\(error)")
-  //      return []
-  //    }
-  //  }
+  private func buildStopPredictionRequest(for stopName: String) -> URLRequest {
+    var url = URL(string: "https://api.opendata.metlink.org.nz/v1/stop-predictions")!
 
-  //  func remoteDataStream(
-  //    forURLs urls: [URL],
-  //    urlSession: URLSession = .shared
-  //  ) -> AsyncThrowingStream<Data, Error> {
-  //    var index = 0
-  //
-  //    return AsyncThrowingStream {
-  //      guard index < urls.count else {
-  //        return nil
-  //      }
-  //
-  //      let url = urls[index]
-  //      index += 1
-  //
-  //      let (data, _) = try await urlSession.data(from: url)
-  //      return data
-  //    }
-  //  }
+    url.append(queryItems: [URLQueryItem(name: "stop_id", value: stopName)])
+
+    var request = URLRequest(url: url)
+
+    request.addValue(apiKey, forHTTPHeaderField: Constants.apiKeyHeader)
+
+    return request
+  }
 }

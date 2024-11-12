@@ -4,9 +4,12 @@ struct MainWidgetDeparturesView: View {
   @State private var rows: [Row]
   @State public var busStop: BusStop
 
+  let maxDeparturesToShow = 4
+
   init(busStop: BusStop) {
     self.busStop = busStop
-    self.rows = Row.create(from: busStop.departures)
+    let depsToShow = Array(busStop.departures.prefix(maxDeparturesToShow))
+    self.rows = Row.create(from: depsToShow)
   }
 
   var body: some View {
