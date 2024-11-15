@@ -5,7 +5,7 @@ struct MainWidget: Widget {
   let kind: String = "info.eoinkelly.WellyBus.Widgets.WellyBusWidget"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: WellyBusWidgetTimelineProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: MainWidgetTimelineProvider()) { entry in
       MainWidgetView(entry: entry)
         .containerBackground(.background, for: .widget)
     }
@@ -19,5 +19,10 @@ struct MainWidget: Widget {
   MainWidget()
 } timeline: {
   let busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
-  MainWidgetTimelineEntry(date: Date(), busStops: busStops)
+  MainWidgetTimelineEntry(
+    date: Date(),
+    busStops: busStops,
+    containingTimelineLength: -1,
+    containingTimelineIndex: 0
+  )
 }

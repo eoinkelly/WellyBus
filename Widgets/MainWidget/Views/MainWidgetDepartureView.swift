@@ -1,26 +1,21 @@
 import SwiftUI
 
 struct MainWidgetDepartureView: View {
-  @State public var departure: BusDeparture
-  @State public var busStop: BusStop
+  @State public var departureSnapshot: DepartureSnapshot
+  @State public var busStopSnapshot: BusStopSnapshot
 
-  init(busStop: BusStop, departure: BusDeparture) {
-    self.departure = departure
-    self.busStop = busStop
+  init(busStopSnapshot: BusStopSnapshot, departureSnapshot: DepartureSnapshot) {
+    self.departureSnapshot = departureSnapshot
+    self.busStopSnapshot = busStopSnapshot
   }
 
   var body: some View {
     HStack(alignment: .center) {
-      RouteNameView(busStop: busStop, departure: departure)
+      MainWidgetRouteNameView(
+        busStopSnapshot: busStopSnapshot, departureSnapshot: departureSnapshot)
 
       HStack(alignment: .center, spacing: 4) {
-        if let expected = departure.expectedAt {
-          DepartureTimeView(departAt: expected)
-        } else if let aimed = departure.scheduledAt {
-          DepartureTimeView(departAt: aimed)
-        } else {
-          Text("UNKNOWN")
-        }
+        MainWidgetDepartureTimeView(departsAt: departureSnapshot.departsAt)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
     }

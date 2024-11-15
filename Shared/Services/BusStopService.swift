@@ -2,18 +2,18 @@ import Foundation
 
 struct BusStopService {
   static let shared = BusStopService()
-  static let maxDeparturesToShowPerStop = 6
 
-  func fetchBusStopsFromMetlink() async -> [BusStop] {
+  func fetchBusStopsFromMetlink(maxDeparturesPerStop: Int? = nil) async -> [BusStop] {
     var stops: [BusStop] = []
 
     do {
       for stopConfig in AppConfig.shared.busStopsOfInterest {
         let allDepartures = try await MetlinkAPI.shared.predictedDeparturesFor(
           stopName: stopConfig.stopId)
+        let departuresFetchedAt = Date()
         let followedBusRouteNames = stopConfig.followedBusRoutes.map { $0.name }
 
-        let departuresSlice =
+        var departuresOfInterest =
           allDepartures
           .filter { followedBusRouteNames.contains($0.serviceId) }
           .map { departure in
@@ -30,14 +30,17 @@ struct BusStopService {
               backgroundColor: route.backgroundColor
             )
           }
-          .prefix(Self.maxDeparturesToShowPerStop)
-        let departures = Array(departuresSlice)
+
+        if let maxDeparturesPerStop = maxDeparturesPerStop {
+          departuresOfInterest = Array(departuresOfInterest.prefix(maxDeparturesPerStop))
+        }
 
         let stop = BusStop(
           stopName: stopConfig.stopId,
           nickName: stopConfig.friendlyName,
-          departures: departures,
-          direction: stopConfig.direction
+          departures: departuresOfInterest,
+          direction: stopConfig.direction,
+          departuresFetchedAt: departuresFetchedAt
         )
 
         stops.append(stop)

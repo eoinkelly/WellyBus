@@ -79,7 +79,7 @@ struct MainAppView: View {
       print("Running refresh Task")
       markRefreshInProgress()
 
-      busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
+      busStops = await BusStopService.shared.fetchBusStopsFromMetlink(maxDeparturesPerStop: 6)
 
       if let nextDepartureAt = BusStopService.shared.nextDeparture(for: busStops) {
         scheduleNextRefresh(at: nextDepartureAt)
