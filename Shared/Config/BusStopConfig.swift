@@ -19,6 +19,6 @@ struct BusStopConfig: Hashable {
 
   let friendlyName: String
   let stopId: String
-  let followedBusRoutes: Set<BusRouteConfig>
+  let followedBusRoutes: [BusRouteConfig]
   let direction: BusDirection
 }
