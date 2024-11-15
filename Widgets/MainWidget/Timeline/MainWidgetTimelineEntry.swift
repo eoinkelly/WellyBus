@@ -34,9 +34,6 @@ struct MainWidgetTimelineEntry: TimelineEntry {
     let snapshots = busStops.map {
       buildBusStopSnapshot(from: $0, snapshotTime: snapshotTime, snapshotTakenAt: snapshotTakenAt)
     }
-    //    print("**************************************")
-    //    dump(snapshots, name: "snapshots")
-    //    print("**************************************")
     return snapshots
   }
 
