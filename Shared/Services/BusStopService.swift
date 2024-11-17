@@ -8,6 +8,8 @@ struct BusStopService {
 
     do {
       for stopConfig in AppConfig.shared.busStopsOfInterest {
+        logNotice("Start building models for stop=\(stopConfig.stopId)")
+
         let allDepartures = try await MetlinkAPI.shared.predictedDeparturesFor(
           stopName: stopConfig.stopId)
         let departuresFetchedAt = Date()
@@ -46,8 +48,13 @@ struct BusStopService {
         stops.append(stop)
       }
 
+      logNotice(
+        "Successfully Created \(stops.count) BusStop models for: \(stops.map { "'\($0.nickName)'" }.joined(separator: ", "))"
+      )
+
       return stops
     } catch {
+      logError("Unexpected error: \(error)")
       return []
     }
   }
@@ -66,10 +73,18 @@ struct BusStopService {
       .min(by: { $0.nextDeparture < $1.nextDeparture })
 
     if let (name, depTime) = next {
-      Debug.dumpTime(time: depTime, message: "Next depature of any bus is at stop '\(name)` in ")
+      logNotice("Next departure of any bus from stop '\(name)` is \(Debug.asRelativeTime(depTime))")
       return depTime
     }
 
     return nil
+  }
+
+  private func logNotice(_ msg: String) {
+    Log.log("BusStopService: \(msg)", logger: .service)
+  }
+
+  private func logError(_ msg: String) {
+    Log.error("BusStopService: \(msg)", logger: .service)
   }
 }

@@ -87,7 +87,7 @@ struct StopPredictionsApiDeparture: Decodable, Identifiable {
   let status: String?
   let monitored: Bool
   let wheelchairAccessible: Bool
-  let tripId: String
+  let tripId: String?
 
   enum CodingKeys: String, CodingKey {
     case stopId = "stop_id"

@@ -15,7 +15,7 @@ struct MainWidgetDepartureView: View {
         busStopSnapshot: busStopSnapshot, departureSnapshot: departureSnapshot)
 
       HStack(alignment: .center, spacing: 4) {
-        MainWidgetDepartureTimeView(departsAt: departureSnapshot.departsAt)
+        MainWidgetDepartureTimeView(departsAt: departureSnapshot.bestDepartureTimeGuess)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
     }

@@ -11,7 +11,6 @@
 		4991E77B2CD426EA008A0E03 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F364412CD1E4F200BF7104 /* SwiftUI.framework */; };
 		4991E7862CD426EB008A0E03 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4991E7792CD426EA008A0E03 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		49F39ED92CDE951600C4B364 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 49F39ED82CDE951600C4B364 /* Blackbird */; };
-		49F39EDB2CDE956700C4B364 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 49F39EDA2CDE956700C4B364 /* Blackbird */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,7 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F39EDB2CDE956700C4B364 /* Blackbird in Frameworks */,
 				4991E77B2CD426EA008A0E03 /* SwiftUI.framework in Frameworks */,
 				4991E77A2CD426EA008A0E03 /* WidgetKit.framework in Frameworks */,
 			);
@@ -284,7 +282,6 @@
 			);
 			name = WidgetsExtension;
 			packageProductDependencies = (
-				49F39EDA2CDE956700C4B364 /* Blackbird */,
 			);
 			productName = WidgetsExtension;
 			productReference = 4991E7792CD426EA008A0E03 /* WidgetsExtension.appex */;
@@ -812,11 +809,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		49F39ED82CDE951600C4B364 /* Blackbird */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */;
-			productName = Blackbird;
-		};
-		49F39EDA2CDE956700C4B364 /* Blackbird */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */;
 			productName = Blackbird;

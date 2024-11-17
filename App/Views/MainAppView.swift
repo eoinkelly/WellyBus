@@ -1,10 +1,11 @@
 import SwiftUI
+import WidgetKit
 
 struct MainAppView: View {
   @State private var busStops: [BusStop] = []
   @State private var lastUpdatedAt = Date()
   @State private var refreshInProgress = false
-  @State private var scheduledTimers: [Timer] = []
+  @State private var scheduledTimer: Timer? = nil
 
   @Environment(\.scenePhase) var scenePhase
 
@@ -22,23 +23,29 @@ struct MainAppView: View {
             }
           }
         }
-        .onChange(of: scenePhase, initial: true) { _oldPhase, newPhase in
+        .onChange(of: scenePhase, initial: true) { _, newPhase in
           if newPhase == .active {
+            logNotice("Running onChange lambda")
             refresh()
           }
         }
       }
       .refreshable {
-        // when the user pulls to refresh, we want to clear all existing timers and refresh
+        // when the user pulls to refresh, we want to clear any existing timer and refresh
         // the data (which will schedule a new timer for the next refresh)
-        clearAllTimers()
+        invalidateAnyExistingTimer()
         refresh()
       }
       .onAppear {
-        refresh()
+        #if targetEnvironment(simulator)
+          // Previews don't seem to notice the `onChange(of: scenePhase ...)` modifier
+          // so we explicitly refresh
+          logNotice("Running onAppear refresh for preview")
+          refresh()
+        #endif
       }
       .onDisappear {
-        clearAllTimers()
+        invalidateAnyExistingTimer()
       }
 
       LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
@@ -46,37 +53,31 @@ struct MainAppView: View {
       HelpView()
     }
     .padding([.leading, .trailing], 16)
+
   }
 
   private func scheduleNextRefresh(at nextRefreshAt: Date) {
-    Debug.dumpTime(time: nextRefreshAt, message: "Scheduling next refresh for")
+    logNotice("Scheduling next refresh: \(Debug.asRelativeTime(nextRefreshAt))")
 
-    let timer = Timer.scheduledTimer(
+    invalidateAnyExistingTimer()
+
+    self.scheduledTimer = Timer.scheduledTimer(
       withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
       repeats: false
     ) { _ in
-      print("Running scheduled refresh closure")
+      logNotice("Timer fired")
       refresh()
     }
-
-    clearAllTimers()
-    scheduledTimers.append(timer)
-    print("\(scheduledTimers.count) timers now scheduled")
   }
 
-  private func clearAllTimers() {
-    print("Clearing all timers")
-
-    for timer in scheduledTimers {
-      timer.invalidate()
-    }
-
-    scheduledTimers.removeAll()
+  private func invalidateAnyExistingTimer() {
+    scheduledTimer?.invalidate()
+    scheduledTimer = nil
   }
 
   private func refresh() {
     Task {
-      print("Running refresh Task")
+      logNotice("Starting refresh Task")
       markRefreshInProgress()
 
       self.busStops = await BusStopService.shared.fetchBusStopsFromMetlink(maxDeparturesPerStop: 6)
@@ -85,13 +86,22 @@ struct MainAppView: View {
         scheduleNextRefresh(at: nextDepartureAt)
       } else {
         let fallBack = Date().addingTimeInterval(5 * 60)  // 5 mins
-        Debug.dumpTime(
-          time: fallBack, message: "No next departure found at any stop. Fallback refresh at")
+        logNotice(
+          "No next departure found for any stop. Fallback refresh: \(Debug.asRelativeTime(fallBack))"
+        )
         scheduleNextRefresh(at: fallBack)
       }
 
       markRefreshComplete()
+      
+      // Force a refresh of the widgets when the app gets refreshed
+      refreshWidgets()
     }
+  }
+
+  private func refreshWidgets() {
+    logNotice("Refreshing widget timeline")
+    WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Widgets.MainWidget.kind)
   }
 
   private func markRefreshInProgress() {
@@ -101,6 +111,10 @@ struct MainAppView: View {
   private func markRefreshComplete() {
     refreshInProgress = false
     lastUpdatedAt = Date()
+  }
+
+  private func logNotice(_ msg: String) {
+    Log.notice(msg, logger: .mainApp)
   }
 }
 

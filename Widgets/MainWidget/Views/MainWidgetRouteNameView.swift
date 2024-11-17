@@ -20,7 +20,7 @@ struct MainWidgetRouteNameView: View {
     HStack {
       Rectangle()
         .fill(highlightColor)
-        .frame(width: 6)
+        .frame(width: 6, height: 30)
         .cornerRadius(3)
 
       Text(departureSnapshot.serviceId)

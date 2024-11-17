@@ -5,6 +5,12 @@ import SwiftUI
 class AppConfig {
   static let shared = AppConfig()
 
+  enum Widgets {
+    enum MainWidget {
+      static let kind: String = "info.eoinkelly.WellyBus.Widgets.WellyBusWidget"
+    }
+  }
+
   // These are Arrays not Sets so we can preserve order
   let busStopsOfInterest: [BusStopConfig]
   let followedBusRoutes: [BusStopConfig.BusRouteConfig] = [

@@ -45,7 +45,7 @@ struct MainWidgetTimelineEntry: TimelineEntry {
     let departureSnapshots = busStop
       .departures
       .compactMap { buildDepartureSnapshot(from: $0, snapshotTime: snapshotTime) }
-      .sorted { $0.bestDepartureTimeGuess < $1.bestDepartureTimeGuess }
+    //      .sorted { $0.bestDepartureTimeGuess < $1.bestDepartureTimeGuess }
 
     return BusStopSnapshot(
       stopName: busStop.stopName,
@@ -62,19 +62,6 @@ struct MainWidgetTimelineEntry: TimelineEntry {
   {
     guard let bestGuess = departure.bestDepartureTimeGuess else { return nil }
 
-    let departurePresentation: DepartureTimePresentation
-
-    // if depatureTime is more than 1 hour in the future from the expected render time
-    // then show absolute time
-    if bestGuess.timeIntervalSince(snapshotTime) > 3600 {
-      departurePresentation = .absoluteTime(time: bestGuess)
-    } else {
-      departurePresentation = .relativeTime(
-        remainingTime: bestGuess.timeIntervalSince(snapshotTime),
-        time: bestGuess
-      )
-    }
-
     return DepartureSnapshot(
       serviceId: departure.serviceId,
       direction: departure.direction,
@@ -82,8 +69,7 @@ struct MainWidgetTimelineEntry: TimelineEntry {
       expectedAt: departure.expectedAt,
       bestDepartureTimeGuess: bestGuess,
       foregroundColor: departure.foregroundColor,
-      backgroundColor: departure.backgroundColor,
-      departsAt: departurePresentation
+      backgroundColor: departure.backgroundColor
     )
   }
 }
@@ -94,11 +80,15 @@ struct BusStopSnapshot: Identifiable {
   let nickName: String
   let direction: BusDirection
   let snapshotTakenAt: Date
+
+  /// The time at which this snapshot is intended to be rendered to the screen
   let snapshotTime: Date
+
   let departures: [DepartureSnapshot]
 
-  func nextDepartures(limit: Int, after: Date = Date()) -> [DepartureSnapshot] {
-    Array(self.departures.filter { $0.bestDepartureTimeGuess >= after }.prefix(limit))
+  // Find up to `limit` depatures which happen after `after`
+  func nextDepartures(limit: Int, after: Date = Date.now) -> [DepartureSnapshot] {
+    Array(self.departures.filter { $0.bestDepartureTimeGuess > after }.prefix(limit))
   }
 }
 
@@ -111,10 +101,4 @@ struct DepartureSnapshot: Identifiable {
   let bestDepartureTimeGuess: Date
   let foregroundColor: Color
   let backgroundColor: Color
-  let departsAt: DepartureTimePresentation
-}
-
-enum DepartureTimePresentation {
-  case relativeTime(remainingTime: TimeInterval, time: Date)
-  case absoluteTime(time: Date)
 }

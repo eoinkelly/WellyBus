@@ -6,8 +6,17 @@ struct MainWidgetDeparturesView: View {
 
   init(busStopSnapshot: BusStopSnapshot) {
     self.busStopSnapshot = busStopSnapshot
-    self.rows = Row.create(
-      from: busStopSnapshot.nextDepartures(limit: 2, after: busStopSnapshot.snapshotTime))
+
+    let nextDepatures = busStopSnapshot.nextDepartures(
+      limit: 2, after: busStopSnapshot.snapshotTime)
+
+    if nextDepatures.count == 2 {
+      self.rows = Row.create(from: nextDepatures)
+    } else {
+      self.rows = []
+      // TODO: if there are not at least 2 departures then fill the row space with a "open app for better info" msg
+    }
+
   }
 
   var body: some View {

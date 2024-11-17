@@ -2,14 +2,16 @@ import SwiftUI
 import WidgetKit
 
 struct MainWidget: Widget {
-  let kind: String = "info.eoinkelly.WellyBus.Widgets.WellyBusWidget"
-
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: MainWidgetTimelineProvider()) { entry in
+    StaticConfiguration(
+      kind: AppConfig.Widgets.MainWidget.kind, provider: MainWidgetTimelineProvider()
+    ) { entry in
       MainWidgetView(entry: entry)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .containerBackground(.background, for: .widget)
     }
     .configurationDisplayName("Welly Bus")
+    .contentMarginsDisabled()
     .description("Upcoming bus departures")
     .supportedFamilies([.systemLarge])
   }

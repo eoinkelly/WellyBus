@@ -49,7 +49,7 @@ struct MainWidgetTimelineProvider: TimelineProvider {
       // current timestamp because we want WidgetKit to show it a.s.a.p.
       var entries = [
         MainWidgetTimelineEntry(
-          date: Calendar.current.date(byAdding: .minute, value: 0, to: actualNow)!,
+          date: actualNow,
           busStops: busStops,
           containingTimelineLength: numTimelineEntries,
           containingTimelineIndex: 0
@@ -82,6 +82,6 @@ struct MainWidgetTimelineProvider: TimelineProvider {
     let calendar = Calendar.current
     let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: now)
     let startOfCurrentMinute = calendar.date(from: components)!
-    return Calendar.current.date(byAdding: .second, value: 1, to: startOfCurrentMinute)!
+    return Calendar.current.date(byAdding: .second, value: 3, to: startOfCurrentMinute)!
   }
 }

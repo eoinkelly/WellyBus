@@ -5,6 +5,15 @@ struct MainWidgetStopHeaderView: View {
   @State public var fontStyle: Font = .caption
   @State public var imageScale: Image.Scale = .small
 
+  var backgroundColor: Color {
+    switch busStopSnapshot.direction {
+    case .toHome:
+      return Color("toHomeHeaderColor")
+    case .toTown:
+      return Color("toTownHeaderColor")
+    }
+  }
+
   var body: some View {
     HStack(alignment: .center, spacing: 4) {
       Image(systemName: "location")
@@ -29,5 +38,9 @@ struct MainWidgetStopHeaderView: View {
           .font(fontStyle)
       }
     }
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .padding(4)
+    .background(backgroundColor)
+    .cornerRadius(8)
   }
 }
