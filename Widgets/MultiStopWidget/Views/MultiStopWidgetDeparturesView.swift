@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MainWidgetDeparturesView: View {
+struct MultiStopWidgetDeparturesView: View {
   @State private var rows: [Row]
   @State public var busStopSnapshot: BusStopSnapshot
 
@@ -24,7 +24,7 @@ struct MainWidgetDeparturesView: View {
       ForEach(rows) { row in
         GridRow {
           ForEach(row.departureSnapshots) { departureSnapshot in
-            MainWidgetDepartureView(
+            MultiStopWidgetDepartureView(
               busStopSnapshot: busStopSnapshot,
               departureSnapshot: departureSnapshot
             )

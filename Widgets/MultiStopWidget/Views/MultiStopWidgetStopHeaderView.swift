@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MainWidgetStopHeaderView: View {
+struct MultiStopWidgetStopHeaderView: View {
   @State public var busStopSnapshot: BusStopSnapshot
   @State public var fontStyle: Font = .caption
   @State public var imageScale: Image.Scale = .small

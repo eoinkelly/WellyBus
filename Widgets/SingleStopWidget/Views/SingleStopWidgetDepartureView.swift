@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MainWidgetDepartureView: View {
+struct SingleStopWidgetDepartureView: View {
   @State public var departureSnapshot: DepartureSnapshot
   @State public var busStopSnapshot: BusStopSnapshot
 
@@ -11,11 +11,11 @@ struct MainWidgetDepartureView: View {
 
   var body: some View {
     HStack(alignment: .center) {
-      MainWidgetRouteNameView(
+      SingleStopWidgetRouteNameView(
         busStopSnapshot: busStopSnapshot, departureSnapshot: departureSnapshot)
 
       HStack(alignment: .center, spacing: 4) {
-        MainWidgetDepartureTimeView(departsAt: departureSnapshot.bestDepartureTimeGuess)
+        SingleStopWidgetDepartureTimeView(departsAt: departureSnapshot.bestDepartureTimeGuess)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
     }

@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct DebugView: View {
-  var entry: MainWidgetTimelineProvider.Entry
+struct MultiStopWidgetDebugView: View {
+  var entry: MultiStopWidgetTimelineProvider.Entry
 
   var body: some View {
     HStack(alignment: .center, spacing: 4) {

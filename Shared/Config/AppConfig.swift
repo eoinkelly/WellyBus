@@ -6,8 +6,11 @@ class AppConfig {
   static let shared = AppConfig()
 
   enum Widgets {
-    enum MainWidget {
-      static let kind: String = "info.eoinkelly.WellyBus.Widgets.WellyBusWidget"
+    enum MultiStopWidget {
+      static let kind: String = "info.eoinkelly.WellyBus.Widgets.MultiStop"
+    }
+    enum SingleStopWidget {
+      static let kind: String = "info.eoinkelly.WellyBus.Widgets.SingleStop"
     }
   }
 

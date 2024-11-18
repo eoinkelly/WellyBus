@@ -14,19 +14,22 @@ struct DepartureTimeView: View {
       if departAt >= oneHourFromNow(currentTime: now) {
         Text(departAt, style: .time)
       } else {
-        Image(systemName: "timer")
+        Text(departAt, style: .time)
+        //        Image(systemName: "timer")
         //          .frame(maxWidth: .infinity, alignment: .leading)
 
         // My original way.
         // -- shows seconds
         // ++ counts down with the correct precision
         //
+        Text("|")
         Text(
           timerInterval: now...departAt,
           countsDown: true,
           showsHours: false
         )
-        .frame(maxWidth: .infinity, alignment: .leading)
+        //        .frame(maxWidth: .infinity, alignment: .leading)
+        //        Text(")")
         //        .border(.red)
 
         // Option 2:

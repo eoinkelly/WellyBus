@@ -48,8 +48,9 @@ struct MainAppView: View {
         invalidateAnyExistingTimer()
       }
 
-      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
       Divider()
+      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
+        .padding([.leading, .trailing], 12)
       HelpView()
     }
     .padding([.leading, .trailing], 16)
@@ -93,7 +94,7 @@ struct MainAppView: View {
       }
 
       markRefreshComplete()
-      
+
       // Force a refresh of the widgets when the app gets refreshed
       refreshWidgets()
     }
@@ -101,7 +102,8 @@ struct MainAppView: View {
 
   private func refreshWidgets() {
     logNotice("Refreshing widget timeline")
-    WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Widgets.MainWidget.kind)
+    WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Widgets.MultiStopWidget.kind)
+    WidgetCenter.shared.reloadTimelines(ofKind: AppConfig.Widgets.SingleStopWidget.kind)
   }
 
   private func markRefreshInProgress() {

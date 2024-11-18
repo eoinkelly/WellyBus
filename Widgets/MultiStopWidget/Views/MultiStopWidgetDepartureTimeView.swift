@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MainWidgetDepartureTimeView: View {
+struct MultiStopWidgetDepartureTimeView: View {
   @State public var departsAt: Date
 
   let nowSource: TimeDataSource<Date> = .currentDate

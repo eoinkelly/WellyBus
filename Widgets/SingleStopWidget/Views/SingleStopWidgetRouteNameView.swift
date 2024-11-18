@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MainWidgetRouteNameView: View {
+struct SingleStopWidgetRouteNameView: View {
   @State public var departureSnapshot: DepartureSnapshot
   @State public var highlightColor: Color
   @State public var busStopSnapshot: BusStopSnapshot

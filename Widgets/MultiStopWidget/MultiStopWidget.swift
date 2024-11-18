@@ -1,27 +1,28 @@
 import SwiftUI
 import WidgetKit
 
-struct MainWidget: Widget {
+struct MultiStopWidget: Widget {
   var body: some WidgetConfiguration {
     StaticConfiguration(
-      kind: AppConfig.Widgets.MainWidget.kind, provider: MainWidgetTimelineProvider()
+      kind: AppConfig.Widgets.MultiStopWidget.kind,
+      provider: MultiStopWidgetTimelineProvider()
     ) { entry in
-      MainWidgetView(entry: entry)
+      MultiStopWidgetRootView(entry: entry)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .containerBackground(.background, for: .widget)
     }
-    .configurationDisplayName("Welly Bus")
+    .configurationDisplayName("Welly Bus Multi Stop")
     .contentMarginsDisabled()
-    .description("Upcoming bus departures")
+    .description("Departures from all stops")
     .supportedFamilies([.systemLarge])
   }
 }
 
 #Preview(as: .systemLarge) {
-  MainWidget()
+  MultiStopWidget()
 } timeline: {
   let busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
-  MainWidgetTimelineEntry(
+  MultiStopWidgetTimelineEntry(
     date: Date(),
     busStops: busStops,
     containingTimelineLength: -1,

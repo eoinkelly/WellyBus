@@ -10,7 +10,6 @@
 		4991E77A2CD426EA008A0E03 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3643F2CD1E4F200BF7104 /* WidgetKit.framework */; };
 		4991E77B2CD426EA008A0E03 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F364412CD1E4F200BF7104 /* SwiftUI.framework */; };
 		4991E7862CD426EB008A0E03 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4991E7792CD426EA008A0E03 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		49F39ED92CDE951600C4B364 /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = 49F39ED82CDE951600C4B364 /* Blackbird */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +64,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		498CF5512CEABE4C00EE4758 /* Exceptions for "Shared" folder in "WellyBusTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared.xcassets,
+			);
+			target = 492642432CCC202C00C6161C /* WellyBusTests */;
+		};
+		498CF5522CEABE4C00EE4758 /* Exceptions for "Shared" folder in "WellyBusUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Shared.xcassets,
+			);
+			target = 4926424D2CCC202C00C6161C /* WellyBusUITests */;
+		};
 		4991E7872CD426EB008A0E03 /* Exceptions for "Widgets" folder in "WidgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -100,6 +113,10 @@
 		};
 		4991E7922CD43012008A0E03 /* Shared */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				498CF5512CEABE4C00EE4758 /* Exceptions for "Shared" folder in "WellyBusTests" target */,
+				498CF5522CEABE4C00EE4758 /* Exceptions for "Shared" folder in "WellyBusUITests" target */,
+			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -120,7 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F39ED92CDE951600C4B364 /* Blackbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +228,6 @@
 			);
 			name = WellyBus;
 			packageProductDependencies = (
-				49F39ED82CDE951600C4B364 /* Blackbird */,
 			);
 			productName = WellyBus;
 			productReference = 492642322CCC202B00C6161C /* WellyBus.app */;
@@ -323,7 +338,6 @@
 			mainGroup = 492642292CCC202B00C6161C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 492642332CCC202B00C6161C /* Products */;
@@ -795,25 +809,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marcoarment/Blackbird.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		49F39ED82CDE951600C4B364 /* Blackbird */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 49F39ED72CDE948E00C4B364 /* XCRemoteSwiftPackageReference "Blackbird" */;
-			productName = Blackbird;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4926422A2CCC202B00C6161C /* Project object */;
 }

@@ -4,13 +4,8 @@ struct HelpView: View {
   let formattedHelpText: AttributedString
   let formattedScheduledHelpText: AttributedString
 
-  let rawHelpText: String = """
-    Bus is reporting real-time location to MetLink.
-    """
-
-  let scheduledRawHelp: String = """
-    Scheduled bus departure time.
-    """
+  let rawHelpText: String = "Location tracked bus"
+  let scheduledRawHelp: String = "Scheduled bus"
 
   init() {
     self.formattedHelpText = try! AttributedString(markdown: rawHelpText)
@@ -18,7 +13,7 @@ struct HelpView: View {
   }
 
   var body: some View {
-    VStack(alignment: .leading, spacing: 4) {
+    HStack(alignment: .center, spacing: 4) {
       HStack(alignment: .center, spacing: 4) {
         Rectangle()
           .fill(AppColors.trackedBusColor.color)
@@ -27,7 +22,7 @@ struct HelpView: View {
         Text(formattedHelpText)
           .font(.footnote)
       }
-
+      Spacer()
       HStack(alignment: .center, spacing: 4) {
         Rectangle()
           .fill(AppColors.scheduledBusColor.color)
@@ -39,5 +34,6 @@ struct HelpView: View {
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
+    .padding([.leading, .trailing], 12)
   }
 }

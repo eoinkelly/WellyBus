@@ -1,8 +1,8 @@
 import WidgetKit
 
-struct MainWidgetTimelineProvider: TimelineProvider {
-  func placeholder(in context: Context) -> MainWidgetTimelineEntry {
-    return MainWidgetTimelineEntry(
+struct MultiStopWidgetTimelineProvider: TimelineProvider {
+  func placeholder(in context: Context) -> MultiStopWidgetTimelineEntry {
+    return MultiStopWidgetTimelineEntry(
       date: Date(),
       busStops: [],
       containingTimelineLength: 0,
@@ -10,8 +10,10 @@ struct MainWidgetTimelineProvider: TimelineProvider {
     )
   }
 
-  func getSnapshot(in context: Context, completion: @escaping (MainWidgetTimelineEntry) -> Void) {
-    let entry = MainWidgetTimelineEntry(
+  func getSnapshot(
+    in context: Context, completion: @escaping (MultiStopWidgetTimelineEntry) -> Void
+  ) {
+    let entry = MultiStopWidgetTimelineEntry(
       date: Date(),
       busStops: [],
       containingTimelineLength: 0,
@@ -23,7 +25,7 @@ struct MainWidgetTimelineProvider: TimelineProvider {
 
   func getTimeline(
     in context: Context,
-    completion: @escaping (Timeline<MainWidgetTimelineEntry>) -> Void
+    completion: @escaping (Timeline<MultiStopWidgetTimelineEntry>) -> Void
   ) {
     Task {
       // Fetch all available data from MetLink about our bus stops of interest
@@ -48,7 +50,7 @@ struct MainWidgetTimelineProvider: TimelineProvider {
       // The first TimelineEntry should have a `date` property set to the
       // current timestamp because we want WidgetKit to show it a.s.a.p.
       var entries = [
-        MainWidgetTimelineEntry(
+        MultiStopWidgetTimelineEntry(
           date: actualNow,
           busStops: busStops,
           containingTimelineLength: numTimelineEntries,
@@ -62,7 +64,7 @@ struct MainWidgetTimelineProvider: TimelineProvider {
       // that moment.
       for i in 1..<numTimelineEntries {
         entries.append(
-          MainWidgetTimelineEntry(
+          MultiStopWidgetTimelineEntry(
             date: Calendar.current.date(
               byAdding: .minute, value: i, to: justAfterStartOfCurrentMin)!,
             busStops: busStops,
