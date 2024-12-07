@@ -7,54 +7,66 @@ struct MainAppView: View {
   @State private var refreshInProgress = false
   @State private var scheduledTimer: Timer? = nil
 
+  @State private var showingSettings = false
+
   @Environment(\.scenePhase) var scenePhase
+  @Environment(\.modelContext) private var modelContext
 
   var body: some View {
-    VStack(alignment: .center) {
-      Text("Welly Bus")
-        .font(.title3)
-        .fontWeight(.bold)
-
-      ScrollView {
-        Grid {
-          ForEach(busStops) { busStop in
-            GridRow {
-              StopPredictionView(busStop: busStop)
+    NavigationStack {
+      VStack(alignment: .center) {
+        ScrollView {
+          Grid {
+            ForEach(busStops) { busStop in
+              GridRow {
+                StopPredictionView(busStop: busStop)
+              }
+            }
+          }
+          .onChange(of: scenePhase, initial: true) { _, newPhase in
+            if newPhase == .active {
+              logNotice("Running onChange lambda")
+              refresh()
             }
           }
         }
-        .onChange(of: scenePhase, initial: true) { _, newPhase in
-          if newPhase == .active {
-            logNotice("Running onChange lambda")
+        .refreshable {
+          // when the user pulls to refresh, we want to clear any existing timer and refresh
+          // the data (which will schedule a new timer for the next refresh)
+          invalidateAnyExistingTimer()
+          refresh()
+        }
+        .onAppear {
+          #if targetEnvironment(simulator)
+            // Previews don't seem to notice the `onChange(of: scenePhase ...)` modifier
+            // so we explicitly refresh
+            logNotice("Running onAppear refresh for preview")
             refresh()
+          #endif
+        }
+        .onDisappear {
+          invalidateAnyExistingTimer()
+        }
+
+        Divider()
+        LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
+          .padding([.leading, .trailing], 12)
+        HelpView()
+      }
+      .padding([.leading, .trailing], 16)
+      .navigationTitle("Departures")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(action: { showingSettings = true }) {
+            Image(systemName: "gear")
           }
         }
       }
-      .refreshable {
-        // when the user pulls to refresh, we want to clear any existing timer and refresh
-        // the data (which will schedule a new timer for the next refresh)
-        invalidateAnyExistingTimer()
-        refresh()
+      .sheet(isPresented: $showingSettings) {
+        SettingsRootView()
       }
-      .onAppear {
-        #if targetEnvironment(simulator)
-          // Previews don't seem to notice the `onChange(of: scenePhase ...)` modifier
-          // so we explicitly refresh
-          logNotice("Running onAppear refresh for preview")
-          refresh()
-        #endif
-      }
-      .onDisappear {
-        invalidateAnyExistingTimer()
-      }
-
-      Divider()
-      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
-        .padding([.leading, .trailing], 12)
-      HelpView()
     }
-    .padding([.leading, .trailing], 16)
-
   }
 
   private func scheduleNextRefresh(at nextRefreshAt: Date) {
