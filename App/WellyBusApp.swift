@@ -29,7 +29,7 @@ struct WellyBusApp: App {
 
   var body: some Scene {
     WindowGroup {
-      MainAppView()
+      AppRootView()
     }
     .modelContainer(container)
   }

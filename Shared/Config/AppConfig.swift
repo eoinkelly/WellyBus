@@ -27,31 +27,31 @@ class AppConfig {
   private init() {
     self.busStopsOfInterest = [
       BusStopConfig(
-        friendlyName: "Manners/Cuba",
+        friendlyName: "Arty Bees to home",
         stopId: "5515",
         followedBusRoutes: followedBusRoutes,
         direction: BusDirection.toHome
       ),
       BusStopConfig(
-        friendlyName: "DoC",
+        friendlyName: "DoC to home",
         stopId: "5006",
         followedBusRoutes: followedBusRoutes,
         direction: BusDirection.toHome
       ),
       BusStopConfig(
-        friendlyName: "Lambton Kiwibank",
+        friendlyName: "Lambton Kiwibank to home",
         stopId: "5014",
         followedBusRoutes: followedBusRoutes,
         direction: BusDirection.toHome
       ),
       BusStopConfig(
-        friendlyName: "Up the top",
+        friendlyName: "Up the top to town",
         stopId: "3772",
         followedBusRoutes: followedBusRoutes,
         direction: BusDirection.toTown
       ),
       BusStopConfig(
-        friendlyName: "Down the bottom",
+        friendlyName: "Down the bottom to town",
         stopId: "3546",
         followedBusRoutes: followedBusRoutes,
         direction: BusDirection.toTown

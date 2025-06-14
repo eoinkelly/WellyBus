@@ -4,8 +4,9 @@ struct HelpView: View {
   let formattedHelpText: AttributedString
   let formattedScheduledHelpText: AttributedString
 
-  let rawHelpText: String = "Location tracked bus"
-  let scheduledRawHelp: String = "Scheduled bus"
+  // Can put markdown in these if required
+  let rawHelpText: String = "Location tracked"
+  let scheduledRawHelp: String = "Scheduled"
 
   init() {
     self.formattedHelpText = try! AttributedString(markdown: rawHelpText)

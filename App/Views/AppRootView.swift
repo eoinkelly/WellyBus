@@ -1,12 +1,11 @@
 import SwiftUI
 import WidgetKit
 
-struct MainAppView: View {
+struct AppRootView: View {
   @State private var busStops: [BusStop] = []
   @State private var lastUpdatedAt = Date()
   @State private var refreshInProgress = false
   @State private var scheduledTimer: Timer? = nil
-
   @State private var showingSettings = false
 
   @Environment(\.scenePhase) var scenePhase
@@ -15,19 +14,18 @@ struct MainAppView: View {
   var body: some View {
     NavigationStack {
       VStack(alignment: .center) {
-        ScrollView {
-          Grid {
-            ForEach(busStops) { busStop in
-              GridRow {
-                StopPredictionView(busStop: busStop)
-              }
-            }
-          }
-          .onChange(of: scenePhase, initial: true) { _, newPhase in
-            if newPhase == .active {
-              logNotice("Running onChange lambda")
-              refresh()
-            }
+        List(busStops) { busStop in
+          DisclosureGroup(
+            content: { StopDetailsView(busStop: busStop) },
+            label: { StopLabelView(busStop: busStop) }
+          )
+          .padding([.top, .bottom], 8)
+        }
+        .scrollContentBackground(.hidden)
+        .onChange(of: scenePhase, initial: true) { _, newPhase in
+          if newPhase == .active {
+            logNotice("Running onChange lambda")
+            refresh()
           }
         }
         .refreshable {
@@ -48,13 +46,10 @@ struct MainAppView: View {
           invalidateAnyExistingTimer()
         }
 
-        Divider()
-        LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
-          .padding([.leading, .trailing], 12)
-        HelpView()
+        AppFooterView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
       }
       .padding([.leading, .trailing], 16)
-      .navigationTitle("Departures")
+      .navigationTitle("Bus stops")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -74,7 +69,7 @@ struct MainAppView: View {
 
     invalidateAnyExistingTimer()
 
-    self.scheduledTimer = Timer.scheduledTimer(
+    scheduledTimer = Timer.scheduledTimer(
       withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
       repeats: false
     ) { _ in
@@ -93,7 +88,7 @@ struct MainAppView: View {
       logNotice("Starting refresh Task")
       markRefreshInProgress()
 
-      self.busStops = await BusStopService.shared.fetchBusStopsFromMetlink(maxDeparturesPerStop: 6)
+      self.busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
 
       if let nextDepartureAt = BusStopService.shared.nextDeparture(for: busStops) {
         scheduleNextRefresh(at: nextDepartureAt)
@@ -133,5 +128,5 @@ struct MainAppView: View {
 }
 
 #Preview {
-  MainAppView()
+  AppRootView()
 }

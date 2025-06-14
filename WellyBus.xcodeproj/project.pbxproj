@@ -64,6 +64,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		496ED53E2D0E18E6005F4368 /* Exceptions for "000_JunkDrawer" folder in "WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BusDirection.swift,
+			);
+			target = 4991E7782CD426EA008A0E03 /* WidgetsExtension */;
+		};
 		498CF5512CEABE4C00EE4758 /* Exceptions for "Shared" folder in "WellyBusTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -101,6 +108,14 @@
 		492642512CCC202C00C6161C /* UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		496ED5392D0E18CF005F4368 /* 000_JunkDrawer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				496ED53E2D0E18E6005F4368 /* Exceptions for "000_JunkDrawer" folder in "WidgetsExtension" target */,
+			);
+			path = 000_JunkDrawer;
 			sourceTree = "<group>";
 		};
 		4991E77C2CD426EA008A0E03 /* Widgets */ = {
@@ -173,6 +188,7 @@
 				492642B12CCD812000C6161C /* WellyBus.xctestplan */,
 				492642752CCC8A9400C6161C /* README.md */,
 				492642772CCC8C8800C6161C /* TODO.gitignored.md */,
+				496ED5392D0E18CF005F4368 /* 000_JunkDrawer */,
 				49F364362CD1722900BF7104 /* Scripts */,
 				4991E7922CD43012008A0E03 /* Shared */,
 				492642342CCC202B00C6161C /* App */,
@@ -224,6 +240,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				492642342CCC202B00C6161C /* App */,
+				496ED5392D0E18CF005F4368 /* 000_JunkDrawer */,
 				4991E7922CD43012008A0E03 /* Shared */,
 			);
 			name = WellyBus;
