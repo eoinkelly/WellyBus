@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct MultiStopWidgetDepartureView: View {
-  @State public var departureSnapshot: DepartureSnapshot
-  @State public var busStopSnapshot: BusStopSnapshot
+  public let departureSnapshot: DepartureSnapshot
+  public let busStopSnapshot: BusStopSnapshot
 
   init(busStopSnapshot: BusStopSnapshot, departureSnapshot: DepartureSnapshot) {
     self.departureSnapshot = departureSnapshot

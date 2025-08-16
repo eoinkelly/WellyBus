@@ -8,8 +8,9 @@ struct HelpView: View {
   let scheduledRawHelp: String = "Scheduled bus"
 
   init() {
-    self.formattedHelpText = try! AttributedString(markdown: rawHelpText)
-    self.formattedScheduledHelpText = try! AttributedString(markdown: scheduledRawHelp)
+    // These are simple, static markdown strings that should always parse successfully
+    self.formattedHelpText = (try? AttributedString(markdown: rawHelpText)) ?? AttributedString(rawHelpText)
+    self.formattedScheduledHelpText = (try? AttributedString(markdown: scheduledRawHelp)) ?? AttributedString(scheduledRawHelp)
   }
 
   var body: some View {

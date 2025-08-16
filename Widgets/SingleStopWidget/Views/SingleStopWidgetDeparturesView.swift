@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SingleStopWidgetDeparturesView: View {
-  @State public var busStopSnapshot: BusStopSnapshot
-  @State public var departures: [DepartureSnapshot]
+  public let busStopSnapshot: BusStopSnapshot
+  public let departures: [DepartureSnapshot]
 
   let numDeparturesToShow: Int = 6
 
