@@ -18,10 +18,13 @@ struct BusStopService {
         var departuresOfInterest =
           allDepartures
           .filter { followedBusRouteNames.contains($0.serviceId) }
-          .map { departure in
-            let route = AppConfig.shared.followedBusRoutes.first(where: {
+          .compactMap { departure in
+            guard let route = AppConfig.shared.followedBusRoutes.first(where: {
               $0.name == departure.serviceId
-            })!
+            }) else {
+              logError("No route configuration found for service: \(departure.serviceId)")
+              return nil
+            }
 
             return BusDeparture(
               serviceId: departure.serviceId,

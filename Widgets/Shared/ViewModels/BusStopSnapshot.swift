@@ -13,7 +13,7 @@ struct BusStopSnapshot: Identifiable {
   let departures: [DepartureSnapshot]
 
   // Find up to `limit` depatures which happen after `after`
-  func nextDepartures(limit: Int, after: Date = Date.now) -> [DepartureSnapshot] {
+  func nextDepartures(limit: Int, after: Date = Date()) -> [DepartureSnapshot] {
     Array(self.departures.filter { $0.bestDepartureTimeGuess > after }.prefix(limit))
   }
 }

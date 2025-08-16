@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct AllDeparturesForStopView: View {
-  @State private var busStop: BusStop
-  @State private var rows: [Row]
+  private let busStop: BusStop
+  private let rows: [Row]
 
   init(busStop: BusStop) {
     self.busStop = busStop

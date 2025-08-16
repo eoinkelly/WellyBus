@@ -43,7 +43,7 @@ struct MetlinkAPI {
 
   private enum Constants {
     static let apiKeyHeader = "x-api-key"
-    static let baseURL = URL(string: "https://api.opendata.metlink.org.nz/v1")!
+    static let baseURL = URL(string: "https://api.opendata.metlink.org.nz/v1")! // This is a known valid URL, safe to force unwrap
     static let predictionsPath = "stop-predictions"
     static let timeout: TimeInterval = 30
   }

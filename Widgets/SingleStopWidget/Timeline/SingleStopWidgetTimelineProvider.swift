@@ -8,7 +8,7 @@ struct SingleStopWidgetTimelineProvider: TimelineProvider {
       nickName: "Example Stop",
       departures: [],
       direction: .toHome,
-      departuresFetchedAt: Date.now
+      departuresFetchedAt: Date()
     ),
     containingTimelineLength: 0,
     containingTimelineIndex: 0
@@ -32,7 +32,18 @@ struct SingleStopWidgetTimelineProvider: TimelineProvider {
     Task {
       // Fetch all available data from MetLink about our bus stops of interest
       let stops: [BusStop] = await BusStopService.shared.fetchBusStopsFromMetlink()
-      let busStop = stops[1]  // FIXME: do better
+      
+      // Use the second stop if available, otherwise fallback to first or create placeholder
+      let busStop: BusStop
+      if stops.count > 1 {
+        busStop = stops[1]
+      } else if let firstStop = stops.first {
+        busStop = firstStop
+      } else {
+        // Fallback to placeholder if no stops available
+        completion(Timeline(entries: [placeholder], policy: .atEnd))
+        return
+      }
 
       // We want a new TimelineEntry for each minute so the Widget will
       // (ideally) refresh each minute. But we also want data shown by the
@@ -50,7 +61,7 @@ struct SingleStopWidgetTimelineProvider: TimelineProvider {
       // current timestamp because we want WidgetKit to show it a.s.a.p.
       var entries = [
         SingleStopWidgetTimelineEntry(
-          date: Date.now,
+          date: Date(),
           busStop: busStop,
           containingTimelineLength: busStop.departures.count,
           containingTimelineIndex: 0
@@ -60,10 +71,11 @@ struct SingleStopWidgetTimelineProvider: TimelineProvider {
       // We create as many timeline entries as we have departures
       // Add a timeline entry to be rendered a few seconds after each bus departs
       for (i, departure) in busStop.departures.enumerated() {
-        if let departsAt = departure.bestDepartureTimeGuess {
+        if let departsAt = departure.bestDepartureTimeGuess,
+           let futureDate = Calendar.current.date(byAdding: .second, value: 3, to: departsAt) {
           entries.append(
             SingleStopWidgetTimelineEntry(
-              date: Calendar.current.date(byAdding: .second, value: 3, to: departsAt)!,
+              date: futureDate,
               busStop: busStop,
               containingTimelineLength: busStop.departures.count,
               containingTimelineIndex: i

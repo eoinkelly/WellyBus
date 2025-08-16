@@ -6,6 +6,7 @@ struct MainAppView: View {
   @State private var lastUpdatedAt = Date()
   @State private var refreshInProgress = false
   @State private var scheduledTimer: Timer? = nil
+  @State private var refreshTask: Task<Void, Never>? = nil
 
   @Environment(\.scenePhase) var scenePhase
 
@@ -46,6 +47,7 @@ struct MainAppView: View {
       }
       .onDisappear {
         invalidateAnyExistingTimer()
+        refreshTask?.cancel()
       }
 
       Divider()
@@ -65,9 +67,9 @@ struct MainAppView: View {
     self.scheduledTimer = Timer.scheduledTimer(
       withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
       repeats: false
-    ) { _ in
-      logNotice("Timer fired")
-      refresh()
+    ) { [weak self] _ in
+      self?.logNotice("Timer fired")
+      self?.refresh()
     }
   }
 
@@ -77,7 +79,8 @@ struct MainAppView: View {
   }
 
   private func refresh() {
-    Task {
+    refreshTask?.cancel()
+    refreshTask = Task {
       logNotice("Starting refresh Task")
       markRefreshInProgress()
 
