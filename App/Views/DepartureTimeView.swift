@@ -2,10 +2,10 @@ import SwiftUI
 
 struct DepartureTimeView: View {
   @State public var departAt: Date
-  @State private var now: Date = .now
+  @State private var now: Date = Date()
 
   private func oneHourFromNow(currentTime: Date) -> Date {
-    Calendar.current.date(byAdding: .hour, value: 1, to: currentTime)!
+    Calendar.current.date(byAdding: .hour, value: 1, to: currentTime) ?? currentTime.addingTimeInterval(3600)
   }
 
   var body: some View {

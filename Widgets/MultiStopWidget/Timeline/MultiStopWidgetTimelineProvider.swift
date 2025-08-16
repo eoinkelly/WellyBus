@@ -83,7 +83,11 @@ struct MultiStopWidgetTimelineProvider: TimelineProvider {
   private func calcTimeStampJustAfterStartOfCurrentMin(_ now: Date) -> Date {
     let calendar = Calendar.current
     let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: now)
-    let startOfCurrentMinute = calendar.date(from: components)!
-    return Calendar.current.date(byAdding: .second, value: 3, to: startOfCurrentMinute)!
+    guard let startOfCurrentMinute = calendar.date(from: components),
+          let result = Calendar.current.date(byAdding: .second, value: 3, to: startOfCurrentMinute) else {
+      // Fallback to current time plus 3 seconds if date calculation fails
+      return now.addingTimeInterval(3)
+    }
+    return result
   }
 }
