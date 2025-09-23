@@ -39,12 +39,6 @@ class AppConfig {
         direction: BusDirection.toHome
       ),
       BusStopConfig(
-        friendlyName: "Lambton Kiwibank to home",
-        stopId: "5014",
-        followedBusRoutes: followedBusRoutes,
-        direction: BusDirection.toHome
-      ),
-      BusStopConfig(
         friendlyName: "Up the top to town",
         stopId: "3772",
         followedBusRoutes: followedBusRoutes,
