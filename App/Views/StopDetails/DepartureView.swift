@@ -13,9 +13,9 @@ struct DepartureView: View {
   
   var body: some View {
     VStack {
-      Text("DepartureView now: \(now.formatted(date: .omitted, time: .standard))")
-        .font(.caption)
-        .foregroundColor(.yellow)
+//      Text("DepartureView now: \(now.formatted(date: .omitted, time: .standard))")
+//        .font(.caption)
+//        .foregroundColor(.yellow)
       HStack(alignment: .center) {
         RouteNameView(busStop: busStop, departure: departure)
 

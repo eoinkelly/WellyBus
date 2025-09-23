@@ -14,9 +14,9 @@ struct DepartureTimeView: View {
   
   var body: some View {
     VStack {
-      Text("DepartureTime: \(now.formatted(date: .omitted, time: .standard))")
-        .font(.caption)
-        .foregroundColor(.purple)
+//      Text("DepartureTime: \(now.formatted(date: .omitted, time: .standard))")
+//        .font(.caption)
+//        .foregroundColor(.purple)
       HStack(alignment: .center, spacing: 4) {
         Text(departAt, style: .time)
 

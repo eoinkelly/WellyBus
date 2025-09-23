@@ -25,11 +25,11 @@ struct StopDetailsView: View {
     //    TimelineView(.periodic(from: Date.now, by: 5.0)) { context in
     //      TimelineView(.everyMinute) { context in
     VStack {
-      Group {
-        Text("Rendered: \(Date.now.formatted(date: .omitted, time: .standard))")
-        //          Text("StopDetails: \(context.date.formatted(date: .omitted, time: .standard))")
-      }
-      .foregroundColor(.red)
+//      Group {
+//        Text("Rendered: \(Date.now.formatted(date: .omitted, time: .standard))")
+//      Text("StopDetails: \(context.date.formatted(date: .omitted, time: .standard))")
+//      }
+//      .foregroundColor(.red)
       ForEach(departuresAfter(date: now)) { departure in
         DepartureView(departure: departure, busStop: busStop, now: $now)
           .frame(maxWidth: .infinity)
