@@ -1,60 +1,67 @@
 import SwiftUI
 import WidgetKit
 
-struct MainAppView: View {
+struct AppRootView: View {
   @State private var busStops: [BusStop] = []
   @State private var lastUpdatedAt = Date()
   @State private var refreshInProgress = false
   @State private var scheduledTimer: Timer? = nil
+  @State private var showingSettings = false
 
   @Environment(\.scenePhase) var scenePhase
+  @Environment(\.modelContext) private var modelContext
 
   var body: some View {
-    VStack(alignment: .center) {
-      Text("Welly Bus")
-        .font(.title3)
-        .fontWeight(.bold)
-
-      ScrollView {
-        Grid {
-          ForEach(busStops) { busStop in
-            GridRow {
-              StopPredictionView(busStop: busStop)
-            }
-          }
+    NavigationStack {
+      VStack(alignment: .center) {
+        List(busStops) { busStop in
+          DisclosureGroup(
+            content: { StopDetailsView(busStop: busStop) },
+            label: { StopLabelView(busStop: busStop) }
+          )
+          .padding([.top, .bottom], 8)
         }
+        .scrollContentBackground(.hidden)
         .onChange(of: scenePhase, initial: true) { _, newPhase in
           if newPhase == .active {
             logNotice("Running onChange lambda")
             refresh()
           }
         }
-      }
-      .refreshable {
-        // when the user pulls to refresh, we want to clear any existing timer and refresh
-        // the data (which will schedule a new timer for the next refresh)
-        invalidateAnyExistingTimer()
-        refresh()
-      }
-      .onAppear {
-        #if targetEnvironment(simulator)
-          // Previews don't seem to notice the `onChange(of: scenePhase ...)` modifier
-          // so we explicitly refresh
-          logNotice("Running onAppear refresh for preview")
+        .refreshable {
+          // when the user pulls to refresh, we want to clear any existing timer and refresh
+          // the data (which will schedule a new timer for the next refresh)
+          invalidateAnyExistingTimer()
           refresh()
-        #endif
-      }
-      .onDisappear {
-        invalidateAnyExistingTimer()
-      }
+        }
+        .onAppear {
+          #if targetEnvironment(simulator)
+            // Previews don't seem to notice the `onChange(of: scenePhase ...)` modifier
+            // so we explicitly refresh
+            logNotice("Running onAppear refresh for preview")
+            refresh()
+          #endif
+        }
+        .onDisappear {
+          invalidateAnyExistingTimer()
+        }
 
-      Divider()
-      LastUpdateView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
-        .padding([.leading, .trailing], 12)
-      HelpView()
+        AppFooterView(lastUpdatedAt: $lastUpdatedAt, refreshInProgress: $refreshInProgress)
+      }
+      .padding([.leading, .trailing], 16)
+      .navigationTitle("Bus stops")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(action: { showingSettings = true }) {
+            Image(systemName: "gear")
+          }
+        }
+      }
+      .sheet(isPresented: $showingSettings) {
+        SettingsRootView()
+      }
     }
-    .padding([.leading, .trailing], 16)
-
   }
 
   private func scheduleNextRefresh(at nextRefreshAt: Date) {
@@ -62,7 +69,7 @@ struct MainAppView: View {
 
     invalidateAnyExistingTimer()
 
-    self.scheduledTimer = Timer.scheduledTimer(
+    scheduledTimer = Timer.scheduledTimer(
       withTimeInterval: nextRefreshAt.timeIntervalSinceNow,
       repeats: false
     ) { _ in
@@ -81,7 +88,7 @@ struct MainAppView: View {
       logNotice("Starting refresh Task")
       markRefreshInProgress()
 
-      self.busStops = await BusStopService.shared.fetchBusStopsFromMetlink(maxDeparturesPerStop: 6)
+      self.busStops = await BusStopService.shared.fetchBusStopsFromMetlink()
 
       if let nextDepartureAt = BusStopService.shared.nextDeparture(for: busStops) {
         scheduleNextRefresh(at: nextDepartureAt)
@@ -121,5 +128,5 @@ struct MainAppView: View {
 }
 
 #Preview {
-  MainAppView()
+  AppRootView()
 }
